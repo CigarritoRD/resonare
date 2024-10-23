@@ -18,7 +18,8 @@ import {
 	MessageSquareIcon,
 	SendIcon,
 } from "../../components/icons/icons";
-import avatar from "../../assets/defaultavatar.svg";
+
+import { NavLink } from "react-router-dom";
 
 const CoursePlayer = () => {
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -219,7 +220,7 @@ const CoursePlayer = () => {
 									type="button"
 									className="text-yellow-400 hover:text-yellow-300"
 								>
-									<SkipBackIcon className="w-6 h-6" />
+									<SkipBackIcon className="h-6 w-6" />
 								</button>
 								<button
 									type="button"
@@ -227,16 +228,16 @@ const CoursePlayer = () => {
 									onClick={() => setIsPlaying(!isPlaying)}
 								>
 									{isPlaying ? (
-										<PauseIcon className="w-6 h-6" />
+										<PauseIcon className="h-6 w-6" />
 									) : (
-										<PlayIcon className="w-6 h-6" />
+										<PlayIcon className="h-6 w-6" />
 									)}
 								</button>
 								<button
 									type="button"
 									className="text-yellow-400 hover:text-yellow-300"
 								>
-									<SkipForwardIcon className="w-6 h-6" />
+									<SkipForwardIcon className="h-6 w-6" />
 								</button>
 							</div>
 							<div className="flex items-center space-x-4">
@@ -247,9 +248,9 @@ const CoursePlayer = () => {
 										onClick={() => setVolume(volume === 0 ? 1 : 0)}
 									>
 										{volume === 0 ? (
-											<VolumeXIcon className="w-6 h-6" />
+											<VolumeXIcon className="h-6 w-6" />
 										) : (
-											<Volume2Icon className="w-6 h-6" />
+											<Volume2Icon className="h-6 w-6" />
 										)}
 									</button>
 									<input
@@ -282,9 +283,9 @@ const CoursePlayer = () => {
 									onClick={toggleFullscreen}
 								>
 									{isFullscreen ? (
-										<MinimizeIcon className="w-6 h-6" />
+										<MinimizeIcon className="h-6 w-6" />
 									) : (
-										<MaximizeIcon className="w-6 h-6" />
+										<MaximizeIcon className="h-6 w-6" />
 									)}
 								</button>
 							</div>
@@ -311,7 +312,7 @@ const CoursePlayer = () => {
 						className="flex items-center text-yellow-400 hover:text-yellow-300 mb-2"
 						onClick={() => setShowNotes(!showNotes)}
 					>
-						<FileTextIcon className="w-6 h-6 mr-2" />
+						<FileTextIcon className="mr-2" />
 						{showNotes ? "Ocultar notas" : "Mostrar notas"}
 					</button>
 					{showNotes && (
@@ -340,7 +341,7 @@ const CoursePlayer = () => {
 									</label>
 									<label className="flex items-center">
 										<input type="radio" name="q1" value="b" className="mr-2" />
-										<span>B) La </span>
+										<span>B) La</span>
 									</label>
 									<label className="flex items-center">
 										<input type="radio" name="q1" value="c" className="mr-2" />
@@ -362,15 +363,16 @@ const CoursePlayer = () => {
 				<div className="bg-slate-800 rounded-lg p-4 mb-4">
 					<h3 className="text-xl font-bold mb-4">Recursos del Curso</h3>
 					<ul className="space-y-2">
-						{course.resources.map((resource, index) => (
-							<li key={index}>
-								<button
-									type="button"
+						{course.resources.map((resource) => (
+							<li key={resource.name}>
+								<NavLink
+									to={"#"}
 									className="flex items-center text-yellow-400 hover:text-yellow-300"
+									onClick={(e) => e.preventDefault()} // Previene la navegación
 								>
-									<DownloadIcon className="w-6 h-6 mr-2" />
+									<DownloadIcon className="mr-2" />
 									{resource.name} ({resource.type.toUpperCase()})
-								</button>
+								</NavLink>
 							</li>
 						))}
 					</ul>
@@ -381,69 +383,67 @@ const CoursePlayer = () => {
 					<h3 className="text-xl font-bold mb-4">Comentarios</h3>
 					<div className="space-y-4">
 						{course.comments.map((comment) => (
-							<Card key={comment.id} className="bg-slate-700">
-								<CardContent className="p-4">
-									<div className="flex items-start space-x-4">
-										<Avatar>
-											<AvatarImage src={comment.avatar} alt={comment.user} />
-											<AvatarFallback>{comment.user.charAt(0)}</AvatarFallback>
-										</Avatar>
-										<div className="flex-1">
-											<div className="flex items-center justify-between">
-												<h4 className="font-semibold">{comment.user}</h4>
-												<span className="text-sm  text-slate-400">
-													{new Date(comment.date).toLocaleDateString()}
-												</span>
-											</div>
-											<p className="mt-1">{comment.content}</p>
-											{comment.replies.map((reply) => (
-												<div
-													key={reply.id}
-													className="mt-2 pl-4 border-l-2 border-slate-600"
-												>
-													<div className="flex items-start space-x-4">
-														<Avatar>
-															<AvatarImage
-																src={reply.avatar}
-																alt={reply.user}
-															/>
-															<AvatarFallback>
-																{reply.user.charAt(0)}
-															</AvatarFallback>
-														</Avatar>
-														<div className="flex-1">
-															<div className="flex items-center justify-between">
-																<h5 className="font-semibold">{reply.user}</h5>
-																<span className="text-sm text-slate-400">
-																	{new Date(reply.date).toLocaleDateString()}
-																</span>
-															</div>
-															<p className="mt-1">{reply.content}</p>
+							<div key={comment.id} className="bg-slate-700 p-4 rounded-lg">
+								<div className="flex items-start space-x-4">
+									<img
+										src={comment.avatar}
+										alt={comment.user}
+										className="w-10 h-10 rounded-full"
+									/>
+									<div className="flex-1">
+										<div className="flex items-center justify-between">
+											<h4 className="font-semibold">{comment.user}</h4>
+											<span className="text-sm text-slate-400">
+												{new Date(comment.date).toLocaleDateString()}
+											</span>
+										</div>
+										<p className="mt-1">{comment.content}</p>
+										{comment.replies.map((reply) => (
+											<div
+												key={reply.id}
+												className="mt-2 pl-4 border-l-2 border-slate-600"
+											>
+												<div className="flex items-start  space-x-4">
+													<img
+														src={reply.avatar}
+														alt={reply.user}
+														className="w-8 h-8 rounded-full"
+													/>
+													<div className="flex-1">
+														<div className="flex items-center justify-between">
+															<h5 className="font-semibold">{reply.user}</h5>
+															<span className="text-sm text-slate-400">
+																{new Date(reply.date).toLocaleDateString()}
+															</span>
 														</div>
+														<p className="mt-1">{reply.content}</p>
 													</div>
 												</div>
-											))}
-										</div>
+											</div>
+										))}
 									</div>
-								</CardContent>
-							</Card>
+								</div>
+							</div>
 						))}
 					</div>
 					<form
 						onSubmit={handleCommentSubmit}
 						className="mt-4 flex items-center space-x-2"
 					>
-						<Input
+						<input
 							type="text"
 							placeholder="Escribe un comentario..."
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
-							className="flex-1"
+							className="flex-1 bg-slate-700 text-slate-100 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
 						/>
-						<Button type="submit">
-							<Send className="w-4 h-4 mr-2" />
+						<button
+							type="submit"
+							className="bg-yellow-500 text-slate-900 py-2 px-4 rounded hover:bg-yellow-400 transition-colors"
+						>
+							<SendIcon className="w-4 h-4 mr-2" />
 							Enviar
-						</Button>
+						</button>
 					</form>
 				</div>
 			</div>
@@ -455,7 +455,7 @@ const CoursePlayer = () => {
 				<h2 className="text-2xl font-bold mb-4">{course.title}</h2>
 				<p className="text-slate-400 mb-4">Instructor: {course.instructor}</p>
 				{course.topics.map((topic, topicIndex) => (
-					<div key={topicIndex} className="mb-4">
+					<div key={topic.title} className="mb-4">
 						<button
 							type="button"
 							className="flex items-center justify-between w-full text-left font-semibold py-2 px-4 rounded hover:bg-slate-700"
@@ -463,27 +463,24 @@ const CoursePlayer = () => {
 						>
 							<span>{topic.title}</span>
 							{expandedTopics.includes(topicIndex) ? (
-								<ChevronDownIcon size={20} />
+								<ChevronDownIcon className="h-6 w-6" />
 							) : (
-								<ChevronRightIcon size={20} />
+								<ChevronRightIcon className="h-6 w-6" />
 							)}
 						</button>
 						{expandedTopics.includes(topicIndex) && (
 							<ul className="ml-4 mt-2">
 								{topic.subtopics.map((subtopic, subtopicIndex) => (
-									<li key={subtopicIndex}>
+									<li key={subtopic.title}>
 										<button
 											type="button"
 											className={`flex items-center w-full text-left py-2 px-4 rounded hover:bg-slate-700 ${currentTopic === topicIndex && currentSubtopic === subtopicIndex ? "bg-yellow-500 text-slate-900" : ""}`}
 											onClick={() => selectSubtopic(topicIndex, subtopicIndex)}
 										>
 											{subtopic.completed ? (
-												<CheckCircleIcon
-													size={16}
-													className="mr-2 text-green-500"
-												/>
+												<CheckCircleIcon className="h-4 w-4 mr-2 text-green-500" />
 											) : (
-												<CircleIcon size={16} className="mr-2" />
+												<CircleIcon className="mr-2 h-4 w-4" />
 											)}
 											<span>{subtopic.title}</span>
 											<span className="ml-auto text-sm text-slate-400">
@@ -502,7 +499,7 @@ const CoursePlayer = () => {
 						type="button"
 						className="flex items-center bg-yellow-500 text-slate-900 py-2 px-4 rounded hover:bg-yellow-400 transition-colors"
 					>
-						<MessageSquareIcon size={20} className="mr-2" />
+						<MessageSquareIcon className="h-6 w-6 mr-2" />
 						Contactar al instructor
 					</button>
 				</div>
