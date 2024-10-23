@@ -31,6 +31,7 @@ const App = () => {
 					<Route path="*" element={<ErrorPage />} />
 					{/* rutas publicas	 */}
 					<Route path="/" element={<Home />} />
+					<Route path="/curso/:id/:cursoNombre" element={<CursoDetalle />} />
 					<Route path="/profesor/:nombre" element={<ProfesoresDetalles />} />
 					<Route path="/profesor/dashboard" element={<ProfesorDashboard />} />
 					<Route
@@ -50,15 +51,15 @@ const App = () => {
 					<Route element={<HomeProtected />}>
 						<Route path="/home" element={<Home />} />
 						<Route path="dashboard" element={<EstudianteDashboard />} />
-						<Route path="/curso/:id/:cursoNombre" element={<CursoDetalle />} />
+
 						<Route
 							path="/curso/:id/:cursoNombre/video"
 							element={<CoursePlayer />}
 						/>
 					</Route>
+
 					<Route path="/iniciar-sesion" element={<LogIn />} />
 					<Route path="/registrarse" element={<SignIn />} />
-					<Route path="/curso/:id" element={<CursoDetalle />} />
 
 					<Route path="/planes" element={<Planes />} />
 				</Routes>
