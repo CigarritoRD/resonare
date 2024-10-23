@@ -6,10 +6,10 @@ import { useState } from "react";
 import LoaderSpiner from "../../components/loader-spiner";
 
 const SignIn = () => {
-	const [errors, setErrors] = useState({});
+	const [errors, setErrors] = useState<FormErrors>({});
 	const { signUp, user, isLoading } = useUser();
 	const navigate = useNavigate();
-
+	type FormErrors = Record<string, string[]>;
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formulario = new FormData(e.currentTarget);
@@ -73,7 +73,7 @@ const SignIn = () => {
 					name="nombre"
 					placeholder="nombre"
 				/>
-				{errors.nombre && <p className="text-red-500">{errors.nombre}</p>}
+				{errors?.nombre && <p className="text-red-500">{errors.nombre}</p>}
 				<label
 					className="font-bold text-xl py-5 text-slate-300 "
 					htmlFor="apellido"
@@ -88,7 +88,7 @@ const SignIn = () => {
 					name="apellido"
 					placeholder="apellido"
 				/>
-				{errors.apellido && <p className="text-red-500">{errors.apellido}</p>}
+				{errors?.apellido && <p className="text-red-500">{errors.apellido}</p>}
 				<label
 					className="font-bold text-xl py-5 text-slate-300 "
 					htmlFor="email"
@@ -103,7 +103,7 @@ const SignIn = () => {
 					name="email"
 					placeholder="correo electrónico"
 				/>
-				{errors.email && <p className="text-red-500">{errors.email}</p>}
+				{errors?.email && <p className="text-red-500">{errors.email}</p>}
 				<label
 					className="font-bold text-xl py-5 text-slate-300 "
 					htmlFor="password"
@@ -118,7 +118,7 @@ const SignIn = () => {
 					name="password"
 					placeholder="contraseña"
 				/>
-				{errors.password && <p className="text-red-500">{errors.password}</p>}
+				{errors?.password && <p className="text-red-500">{errors.password}</p>}
 				<label
 					className="font-bold text-xl py-5 text-slate-300 "
 					htmlFor="passwordconfirmation"
@@ -133,7 +133,7 @@ const SignIn = () => {
 					name="passwordconfirmation"
 					placeholder="confirmar contraseña"
 				/>
-				{errors.confirmPassword && (
+				{errors?.confirmPassword && (
 					<p className="text-red-500">{errors.confirmPassword}</p>
 				)}
 				<button

@@ -1,14 +1,15 @@
 import CursosCarrusel from "../../components/Cursos/Cursos-carrusel/Cursos-carrusel";
+import type { Database } from "../../types/supabase";
 
-import type { Cursos } from "../../types";
-
-const LogedHomeHero = ({ cursos }: { cursos: Cursos }) => {
+const LogedHomeHero = ({
+	cursos,
+}: { cursos: Database["public"]["Tables"]["cursos"]["Row"][] }) => {
 	return (
 		<>
 			<CursosCarrusel
 				cursos={cursos}
-				title={"Cursos que estas viendo"}
-				description="continua tu aprendizaje con tus cursos suscritos"
+				titulo={"Cursos que estas viendo"}
+				descripcion="continua tu aprendizaje con tus cursos suscritos"
 			/>
 		</>
 	);

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { transformToSlug } from "../../utils/transform-a-slug";
 
-const TopicosDelCursos = ({ curso = {}, id = null }) => {
+const TopicosDelCursos = ({ curso = {}, id = "" }) => {
 	const topics = [
 		{
 			title: "Introducción a la guitarra",
@@ -42,7 +42,7 @@ const TopicosDelCursos = ({ curso = {}, id = null }) => {
 			<ul className="flex flex-col gap-4 text-gray-600">
 				{topics.map((topic) => {
 					const linkVideo = transformToSlug(topic.title);
-					const cursoNombre = transformToSlug(curso.nombre);
+					const cursoNombre = transformToSlug(curso.titulo);
 					return (
 						<li
 							key={topic.title}

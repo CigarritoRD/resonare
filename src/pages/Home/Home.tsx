@@ -1,55 +1,39 @@
-import { useEffect, useState, useCallback } from "react";
 import CursosCarrusel from "../../components/Cursos/Cursos-carrusel/Cursos-carrusel";
 import Hero from "../../components/Hero/Hero";
 import useUser from "../../hooks/useUser";
 import LogedHomeHero from "./loged-home-heroe";
-import { obtenerTodosLosCursos } from "../../services/obtener-todos-los-cursos";
-import { obtenerCursosSuscritos } from "../../services/obtener-cursos-suscritos";
 import Professores from "../../components/profesores/profesores";
-
 import { CircularProgress } from "@mui/material";
+import useCursos from "../../hooks/useCursos";
+import { useEffect, useState } from "react";
+import type { Database } from "../../types/supabase";
 
 const Home = () => {
 	const { user, isLoading: isUserLoading } = useUser();
-	const [cursos, setCursos] = useState([]);
-	const [cursosSuscritos, setCursosSuscritos] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	const fetchCursosSuscritos = useCallback(async () => {
-		if (user?.id) {
-			try {
-				const data = await obtenerCursosSuscritos({ alumno_id: user.id });
-				if (data) {
-					setCursosSuscritos(data);
-				}
-			} catch (error) {
-				setError("Error al obtener los cursos suscritos");
-			}
-		}
-	}, [user?.id]);
-
-	const fetchCursos = useCallback(async () => {
-		try {
-			const data = await obtenerTodosLosCursos();
-			if (data) {
-				setCursos(data);
-			}
-		} catch (error) {
-			setError("Error al obtener los cursos");
-		}
-	}, []);
+	const [error, setError] = useState(false);
+	const [cursosSuscritos, setCursosSuscritos] = useState<
+		Database["public"]["Tables"]["cursos"]["Row"][]
+	>([]);
+	const {
+		cursos,
+		obtenerCursosSuscrito,
+		obtenerCursos,
+		buscarCursos,
+		isLoading: isCursosLoading,
+	} = useCursos();
 
 	useEffect(() => {
-		const fetchData = async () => {
-			setIsLoading(true);
-			await Promise.all([fetchCursosSuscritos(), fetchCursos()]);
-			setIsLoading(false);
+		if (isUserLoading) return;
+		const fetchCursosSuscritos = async () => {
+			if (!user?.id) return;
+			const suscripciones = await obtenerCursosSuscrito(user?.id);
+			setCursosSuscritos(suscripciones);
+			console.log(suscripciones);
 		};
-		fetchData();
-	}, [fetchCursosSuscritos, fetchCursos]);
+		fetchCursosSuscritos();
+	}, [isUserLoading, obtenerCursosSuscrito, user?.id]);
 
-	if (isUserLoading || isLoading) {
+	if (isUserLoading || isCursosLoading) {
 		return (
 			<div className="flex items-center justify-center h-screen">
 				<CircularProgress disableShrink />
@@ -75,21 +59,19 @@ const Home = () => {
 					</h2>
 					<div className="space-y-16">
 						<CursosCarrusel
-							cursos={cursos.filter((curso) => curso.precio === 0)}
-							title="Cursos gratuitos"
-							description="Descubre nuestro catálogo de cursos gratuitos para ti"
+							cursos={cursos.filter((curso) => curso.membresia_requerida === 1)}
+							titulo="Cursos gratuitos"
+							descripcion="Descubre nuestro catálogo de cursos gratuitos para ti"
 						/>
 						<CursosCarrusel
-							cursos={cursos
-								.sort((a, b) => b.estudiantes - a.estudiantes)
-								.slice(0, 10)}
-							title="Los más populares"
-							description="Descubre nuestro catálogo de cursos más populares"
+							cursos={cursos}
+							titulo="Los más populares"
+							descripcion="Descubre nuestro catálogo de cursos más populares"
 						/>
 						<CursosCarrusel
 							cursos={cursos.sort(() => 0.5 - Math.random()).slice(0, 10)}
-							title="Recomendados para ti"
-							description="Descubre nuestro catálogo de cursos recomendados para ti"
+							titulo="Recomendados para ti"
+							descripcion="Descubre nuestro catálogo de cursos recomendados para ti"
 						/>
 					</div>
 				</section>

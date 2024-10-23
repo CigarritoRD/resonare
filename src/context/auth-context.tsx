@@ -1,35 +1,13 @@
 import { createContext, type ReactNode, useEffect, useState } from "react";
 import supabase from "../services/auth-supabase";
-import type { AuthError } from "@supabase/supabase-js";
-
-interface authContextType {
-	user: any;
-	login: ({
-		emailInput,
-		passwordInput,
-	}: { emailInput: string; passwordInput: string }) => Promise<void>;
-	logout: () => Promise<void>;
-	signUp: ({
-		nombre,
-		apellido,
-		email,
-		password,
-		passwordconfirmation,
-	}: {
-		nombre: string;
-		apellido: string;
-		email: string;
-		password: string;
-		passwordconfirmation: string;
-	}) => Promise<void>;
-	isloading: boolean;
-}
+import type { AuthError, User } from "@supabase/supabase-js";
+import type { authContextType } from "../utils/Supabase";
 
 const AuthContext = createContext<authContextType | null>(null);
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-	const [error, setError] = useState<AuthError>();
-	const [user, setUser] = useState<any>(null);
+	const [error, setError] = useState<AuthError | undefined>();
+	const [user, setUser] = useState<User | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -42,7 +20,6 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		if (localSesion) {
 			const sesion = JSON.parse(localSesion);
 			setUser(sesion.user);
-			console.log("Sesión cargada desde localStorage");
 			setIsLoading(false);
 			return; // Salir aquí si encontramos una sesión en localStorage
 		}
@@ -79,33 +56,22 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		apellido,
 		email,
 		password,
-		passwordconfirmation,
 	}: {
 		nombre: string;
 		apellido: string;
 		email: string;
 		password: string;
-		passwordconfirmation: string;
 	}) => {
 		try {
 			setIsLoading(true);
-			if (!nombre || !apellido || !email || !password) {
-				throw new Error("Faltan datos obligatorios");
-			}
-			if (!passwordconfirmation) {
-				throw new Error("Falta confirmar contraseña");
-			}
-			if (password !== passwordconfirmation) {
-				throw new Error("Las contraseñas no coinciden");
-			}
-
-			const { data, error } = await supabase.auth.signUp({
+			const { data: usuarioNuevo, error } = await supabase.auth.signUp({
 				email,
 				password,
 				options: {
 					data: {
 						nombre,
 						apellido,
+						rol: "estudiante",
 					},
 				},
 			});
@@ -113,8 +79,25 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 				setIsLoading(false);
 				throw error;
 			}
+
+			// Asegurarse de que el usuario se creó correctamente
+			if (usuarioNuevo.user) {
+				// Insertar en la tabla "estudiantes"
+				const { error: insertError } = await supabase
+					.from("estudiantes")
+					.insert({
+						id: usuarioNuevo.user.id, // ID del usuario creado
+					});
+
+				if (insertError) {
+					setIsLoading(false);
+					throw insertError;
+				}
+			}
+
 			setIsLoading(false);
-			return data;
+			console.log(usuarioNuevo, "usuario creado con exito");
+			return usuarioNuevo;
 		} catch (error: unknown) {
 			setIsLoading(false);
 			if (error instanceof Error) {
@@ -154,7 +137,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 			if (error) {
 				throw error;
 			}
-			setUser({});
+			setUser(null);
 			localStorage.removeItem("sb-esufcalrucmbetiblaoz-auth-token");
 		} catch (error) {
 			if (error instanceof Error) {

@@ -2,7 +2,6 @@ export const SearchIcon = ({ className }: { className: string }) => {
 	return (
 		// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"
 			viewBox="0 0 24 24"
@@ -24,7 +23,6 @@ export const NextIcon = ({ className }: { className: string }) => {
 	return (
 		// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"
 			viewBox="0 0 24 24"
@@ -38,7 +36,7 @@ export const NextIcon = ({ className }: { className: string }) => {
 	);
 };
 
-export const PreviousIcon = ({ className }) => {
+export const PreviousIcon = ({ className }: { className: string }) => {
 	return (
 		// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<svg
@@ -56,7 +54,7 @@ export const PreviousIcon = ({ className }) => {
 	);
 };
 
-export const BellIcon = ({ className }) => {
+export const BellIcon = ({ className }: { className: string }) => {
 	return (
 		<svg
 			aria-hidden="true"
@@ -77,7 +75,7 @@ export const BellIcon = ({ className }) => {
 	);
 };
 
-export const BookOpenIcon = ({ className }) => (
+export const BookOpenIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +98,7 @@ export const BookOpenIcon = ({ className }) => (
 	</svg>
 );
 
-export const ChevronDownIcon = ({ className }) => (
+export const ChevronDownIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +117,7 @@ export const ChevronDownIcon = ({ className }) => (
 	</svg>
 );
 
-export const DashboardIcon = ({ className }) => (
+export const DashboardIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +138,7 @@ export const DashboardIcon = ({ className }) => (
 	</svg>
 );
 
-export const LogOutIcon = ({ className }) => (
+export const LogOutIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		width={24}
@@ -160,7 +158,7 @@ export const LogOutIcon = ({ className }) => (
 	</svg>
 );
 
-export const MusicIcon = ({ className }) => (
+export const MusicIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		width={24}
@@ -181,7 +179,7 @@ export const MusicIcon = ({ className }) => (
 	</svg>
 );
 
-export const StarIcon = ({ className }) => (
+export const StarIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		width={24}
@@ -195,7 +193,7 @@ export const StarIcon = ({ className }) => (
 	</svg>
 );
 
-export const UsersIcon = ({ className }) => (
+export const UsersIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		width={24}
@@ -235,7 +233,7 @@ export const PlusIcon = ({ className }: { className?: string }) => (
 	</svg>
 );
 
-export const UploadIcon = ({ className }) => (
+export const UploadIcon = ({ className }: { className: string }) => (
 	<svg
 		aria-hidden="true"
 		width={24}
@@ -256,7 +254,7 @@ export const UploadIcon = ({ className }) => (
 	</svg>
 );
 
-export const SettingIcon = ({ className }) => (
+export const SettingIcon = ({ className }: { className: string }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
@@ -276,9 +274,8 @@ export const SettingIcon = ({ className }) => (
 	</svg>
 );
 
-export const ClockIcon = ({ className }) => (
+export const ClockIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		width={24}
 		height={24}
@@ -296,9 +293,8 @@ export const ClockIcon = ({ className }) => (
 	</svg>
 );
 
-export const PlayIcon = ({ className }) => (
+export const PlayIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		width={24}
 		height={24}
@@ -315,9 +311,8 @@ export const PlayIcon = ({ className }) => (
 	</svg>
 );
 
-export const CalendarIcon = ({ className }) => (
+export const CalendarIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		height={24}
 		viewBox="0 0 24 24"
@@ -338,9 +333,8 @@ export const CalendarIcon = ({ className }) => (
 	</svg>
 );
 
-export const UserIcon = ({ className }) => (
+export const UserIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		width={24}
 		height={24}
@@ -358,9 +352,8 @@ export const UserIcon = ({ className }) => (
 	</svg>
 );
 
-export const AwardIcon = ({ className }) => (
+export const AwardIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		width={24}
 		height={24}
@@ -379,9 +372,8 @@ export const AwardIcon = ({ className }) => (
 	</svg>
 );
 
-export const BarChartIcon = ({ className }) => (
+export const BarChartIcon = ({ className }: { className: string }) => (
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
 		width={24}
 		height={24}
@@ -400,3 +392,352 @@ export const BarChartIcon = ({ className }) => (
 		<path d="M4 20h14" />
 	</svg>
 );
+
+export const PauseIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-pause`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+			<path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+		</svg>
+	);
+};
+
+export const SkipBackIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			width={24}
+			aria-hidden="true"
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-skip-back`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M20 5v14l-12 -7z" />
+			<path d="M4 5l0 14" />
+		</svg>
+	);
+};
+
+export const SkipForwardIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-skip-forward`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 5l12 7v14l-12 -7z" />
+			<path d="M20 5l0 14" />
+		</svg>
+	);
+};
+
+export const Volume2Icon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-volume-2`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-6z" />
+			<path d="M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-2z" />
+		</svg>
+	);
+};
+
+export const VolumeXIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-volume-x`}
+		>
+			{" "}
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />{" "}
+			<path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-6z" />{" "}
+			<path d="M17 17l3 3m0 -3l-3 3" />{" "}
+		</svg>
+	);
+};
+
+export const MaximizeIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-maximize`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 4h16v16h-16z" />
+			<path d="M14 12h4v4h-4z" />
+			<path d="M20 12h4v4h-4z" />
+		</svg>
+	);
+};
+
+export const MinimizeIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-minimize`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 4h16v16h-16z" />
+			<path d="M14 12h4v4h-4z" />
+		</svg>
+	);
+};
+
+export const DownloadIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-download`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+			<polyline points="7 11 12 16 17 11" />
+			<line x1="12" y1="4" x2="12" y2="16" />
+		</svg>
+	);
+};
+
+export const FileTextIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-file-text`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+			<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+			<line x1="9" y1="9" x2="9.01" y2="9" />
+			<line x1="3" y1="9" x2="3.01" y2="9" />
+		</svg>
+	);
+};
+
+export const CheckCircleIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-check-circle`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<circle cx={12} cy={12} r={9} />
+			<path d="M9 12l2 2l4 -4" />
+		</svg>
+	);
+};
+
+export const CircleIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-circle`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<circle cx={12} cy={12} r={9} />
+		</svg>
+	);
+};
+
+export const FireIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-fire`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+			<path d="M12 12l-4 4l-4 -4" />
+		</svg>
+	);
+};
+
+export const ChevronRightIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-chevron-right`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<polyline points="9 6 15 12 9 18" />
+		</svg>
+	);
+};
+
+export const MessageSquareIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={` ${className} icon icon-tabler icons-tabler-outline icon-tabler-player-message-square`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<rect x={9} y={9} width={13} height={13} rx={2} />
+			<path d="M3 21v-13a9 9 0 0 1 18 0v13" />
+		</svg>
+	);
+};
+
+export const HelpCircleIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-help-circle`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<circle cx={12} cy={12} r={9} />
+			<path d="M9.09 9a3 3 0 0 1 5.83 1c0 .66-.24 1.27-.66 1.72l-4 4a1 1 0 0 1-1.41 0l-4-4A3 3 0 0 1 9.09 9z" />
+		</svg>
+	);
+};
+
+export const SendIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-player-send`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+			<line x1="12" y1="8" x2="12" y2="12" />
+			<line x1="12" y1="16" x2="12.01" y2="16" />
+		</svg>
+	);
+};

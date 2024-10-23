@@ -6,7 +6,7 @@ export const obtenerCursoActual = async ({curso_id}:{ curso_id: string | undefin
     if(!curso_id) throw new Error("Curso ID no encontrado");
     try {
         const { data, error } = await supabase
-        .from("curso")
+        .from("cursos")
         .select("*")
         .eq("id", curso_id);
         
@@ -17,11 +17,11 @@ export const obtenerCursoActual = async ({curso_id}:{ curso_id: string | undefin
         if (data){
             return data
         }
-        
+    return []
 
     } catch (error) {
         // Mostrar el error original en el log
-        console.error("Error al obtener curso actual:", error.message);
+        console.error("Error al obtener curso actual:", error);
         throw new Error("Error al obtener curso actual");
     }
 };

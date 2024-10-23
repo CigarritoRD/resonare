@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { AuthContextProvider } from "./context/auth-context.tsx";
 import App from "./App.tsx";
+import CursoContextProvider from "./context/cursos-context.tsx";
 
 const element = document.getElementById("root");
 if (element)
 	createRoot(element).render(
 		<BrowserRouter>
 			<AuthContextProvider>
-				<App />
+				<CursoContextProvider>
+					<App />
+				</CursoContextProvider>
 			</AuthContextProvider>
 		</BrowserRouter>,
 	);

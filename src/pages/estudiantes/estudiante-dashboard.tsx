@@ -1,25 +1,45 @@
 import { useState, useEffect } from "react";
 import {
 	BookOpenIcon,
-	CalendarIcon,
-	ClockIcon,
 	MusicIcon,
 	PlayIcon,
 	UserIcon,
-	AwardIcon,
 	BarChartIcon,
 	BellIcon,
 	SettingIcon,
 	LogOutIcon,
+	FireIcon,
+	ClockIcon,
+	StarIcon,
 } from "../../components/icons/icons";
-import Logo from "../../components/Header/Logo";
+
+interface Achievement {
+	id: number;
+	name: string;
+	icon: JSX.Element;
+	description: string;
+	image: string;
+}
+interface course {
+	id: number;
+	name: string;
+	progress: number;
+	totalLessons: number;
+	completedLessons: number;
+	image: string;
+}
 
 const StudentDashboard = () => {
 	const [activeTab, setActiveTab] = useState("overview");
-	const [courses, setCourses] = useState([]);
-	const [upcomingLessons, setUpcomingLessons] = useState([]);
-	const [progress, setProgress] = useState({});
-	const [notifications, setNotifications] = useState([]);
+	const [courses, setCourses] = useState<course[]>();
+	const [achievements, setAchievements] = useState<Achievement[]>();
+	const [student, setStudent] = useState({
+		name: "Juan Pérez",
+		email: "juan.perez@example.com",
+		avatar: "https://i.pravatar.cc/150?img=68",
+		practiceStreak: 7,
+		totalPracticeTime: 3600, // en minutos
+	});
 
 	useEffect(() => {
 		// Simular la carga de datos
@@ -28,165 +48,129 @@ const StudentDashboard = () => {
 				id: 1,
 				name: "Guitarra para Principiantes",
 				progress: 60,
-				nextLesson: "2023-05-20T10:00:00",
+				totalLessons: 20,
+				completedLessons: 12,
+				image:
+					"https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80",
 			},
 			{
 				id: 2,
 				name: "Teoría Musical Avanzada",
 				progress: 30,
-				nextLesson: "2023-05-22T14:00:00",
+				totalLessons: 15,
+				completedLessons: 4,
+				image:
+					"https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80",
 			},
 			{
 				id: 3,
 				name: "Piano Intermedio",
 				progress: 45,
-				nextLesson: "2023-05-21T16:00:00",
+				totalLessons: 25,
+				completedLessons: 11,
+				image:
+					"https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80",
 			},
 		]);
 
-		setUpcomingLessons([
+		setAchievements([
 			{
 				id: 1,
-				name: "Guitarra para Principiantes",
-				date: "2023-05-20T10:00:00",
-				duration: 60,
+				name: "Primera Lección",
+				icon: <StarIcon className="h-8 w-8 text-yellow-400" />,
+				description: "Completaste tu primera lección",
+				image:
+					"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
 			},
 			{
 				id: 2,
-				name: "Teoría Musical Avanzada",
-				date: "2023-05-22T14:00:00",
-				duration: 90,
+				name: "Racha de 7 Días",
+				icon: <FireIcon className="h-8 w-8 text-yellow-400" />,
+				description: "Practicaste durante 7 días seguidos",
+				image:
+					"https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
 			},
 			{
 				id: 3,
-				name: "Piano Intermedio",
-				date: "2023-05-21T16:00:00",
-				duration: 60,
-			},
-		]);
-
-		setProgress({
-			totalLessons: 50,
-			completedLessons: 23,
-			totalPracticeTime: 3600, // en minutos
-			streak: 7,
-		});
-
-		setNotifications([
-			{
-				id: 1,
-				message: "Nueva lección disponible en Guitarra para Principiantes",
-				date: "2023-05-19T09:00:00",
+				name: "10 Horas de Práctica",
+				icon: <ClockIcon className="h-8 w-8 text-yellow-400" />,
+				description: "Acumulaste 10 horas de práctica",
+				image:
+					"https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
 			},
 			{
-				id: 2,
-				message: "Recordatorio: Práctica diaria",
-				date: "2023-05-19T18:00:00",
-			},
-			{
-				id: 3,
-				message: "Has completado el 50% de Teoría Musical Avanzada",
-				date: "2023-05-18T14:30:00",
+				id: 4,
+				name: "Maestro del Ritmo",
+				icon: <MusicIcon className="h-8 w-8 text-yellow-400" />,
+				description: "Dominaste los ejercicios de ritmo",
+				image:
+					"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
 			},
 		]);
 	}, []);
 
-	const formatDate = (dateString) => {
-		const options = {
-			weekday: "long",
-			year: "numeric",
-			month: "long",
-			day: "numeric",
-			hour: "2-digit",
-			minute: "2-digit",
-		};
-		return new Date(dateString).toLocaleDateString("es-ES", options);
+	const navigateToCoursePlayer = (courseId: number) => {
+		// Aquí iría la lógica para navegar al reproductor del curso
+		console.log(`Navegando al reproductor del curso ${courseId}`);
 	};
 
 	return (
 		<div className="min-h-screen bg-slate-900 text-slate-100">
-			<header className="bg-slate-900 p-4 flex justify-between items-center">
-				<div className="flex items-center capitalize">
-					<MusicIcon className="h-8 w-8 text-yellow-400 mr-4" />
-					<Logo />
+			<header className="bg-slate-800 p-4 flex justify-between items-center">
+				<div className="flex items-center space-x-4">
+					<MusicIcon className="h-8 w-8 text-yellow-400" />
+					<h1 className="text-2xl font-bold text-slate-100">
+						Escuela de Música
+					</h1>
 				</div>
 				<div className="flex items-center space-x-4">
-					<button
-						type="button"
-						className="p-2 rounded-full bg-slate-700 hover:bg-slate-600 transition-colors"
-					>
-						<BellIcon className="h-5 w-5" />
-					</button>
-					<button
-						type="button"
-						className="p-2 rounded-full bg-slate-700 hover:bg-slate-600 transition-colors"
-					>
-						<SettingIcon className="h-5 w-5" />
-					</button>
-					<button
-						type="button"
-						className="p-2 rounded-full bg-slate-700 hover:bg-slate-600 transition-colors"
-					>
-						<LogOutIcon className="h-5 w-5" />
-					</button>
+					<BellIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
+					<SettingIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
+					<LogOutIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
 				</div>
 			</header>
 
-			<nav className="bg-slate-800 p-4">
+			<nav className="bg-slate-800 p-4 border-b border-slate-700">
 				<ul className="flex space-x-4">
 					<li>
 						<button
 							type="button"
-							className={`px-4 py-2 rounded-md transition-colors flex items-center gap-2 ${
+							className={`px-4 py-2 rounded-md transition-colors ${
 								activeTab === "overview"
 									? "bg-yellow-400 text-slate-900"
-									: "hover:bg-slate-700"
+									: "text-slate-200 hover:bg-slate-700"
 							}`}
 							onClick={() => setActiveTab("overview")}
 						>
-							<UserIcon className="h-4 w-4" />
+							<UserIcon className="h-4 w-4 inline-block mr-2" />
 							Vista General
 						</button>
 					</li>
 					<li>
 						<button
 							type="button"
-							className={`px-4 py-2 rounded-md transition-colors flex items-center gap-2 ${
+							className={`px-4 py-2 rounded-md transition-colors ${
 								activeTab === "courses"
 									? "bg-yellow-400 text-slate-900"
-									: "hover:bg-slate-700"
+									: "text-slate-200 hover:bg-slate-700"
 							}`}
 							onClick={() => setActiveTab("courses")}
 						>
-							<BookOpenIcon className="h-4 w-4" />
+							<BookOpenIcon className="h-4 w-4 inline-block mr-2" />
 							Mis Cursos
 						</button>
 					</li>
 					<li>
 						<button
 							type="button"
-							className={`px-4 py-2 rounded-md transition-colors flex items-center gap-2  ${
-								activeTab === "schedule"
-									? "bg-yellow-400 text-slate-900"
-									: "hover:bg-slate-700"
-							}`}
-							onClick={() => setActiveTab("schedule")}
-						>
-							<CalendarIcon className="h-4 w-4" />
-							Horario
-						</button>
-					</li>
-					<li>
-						<button
-							type="button"
-							className={`px-4 py-2 rounded-md transition-colors flex items-center gap-2 ${
+							className={`px-4 py-2 rounded-md transition-colors ${
 								activeTab === "progress"
 									? "bg-yellow-400 text-slate-900"
-									: "hover:bg-slate-700"
+									: "text-slate-200 hover:bg-slate-700"
 							}`}
 							onClick={() => setActiveTab("progress")}
 						>
-							<BarChartIcon className="h-4 w-4" />
+							<BarChartIcon className="h-4 w-4 inline-block mr-2" />
 							Progreso
 						</button>
 					</li>
@@ -194,218 +178,263 @@ const StudentDashboard = () => {
 			</nav>
 
 			<main className="p-8">
+				<div className="mb-8 bg-slate-800 border border-slate-700 rounded-lg p-6">
+					<h2 className="text-xl font-semibold mb-4 text-slate-100">
+						Perfil del Estudiante
+					</h2>
+					<div className="flex items-center space-x-4">
+						<img
+							src={student.avatar}
+							alt={student.name}
+							className="w-20 h-20 rounded-full"
+						/>
+						<div>
+							<h2 className="text-2xl font-bold text-slate-100">
+								{student.name}
+							</h2>
+							<p className="text-slate-300">{student.email}</p>
+						</div>
+					</div>
+				</div>
+
 				{activeTab === "overview" && (
 					<div className="space-y-8">
-						<section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-2">Cursos Activos</h3>
-								<p className="text-4xl font-bold text-yellow-400">
-									{courses.length}
-								</p>
-							</div>
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-2">Próxima Lección</h3>
-								<p className="text-lg">
-									{formatDate(upcomingLessons[0]?.date)}
-								</p>
-							</div>
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-2">
-									Tiempo de Práctica
-								</h3>
-								<p className="text-4xl font-bold text-yellow-400">
-									{Math.floor(progress.totalPracticeTime / 60)} hrs
-								</p>
-							</div>
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-2">
+						<section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+							<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+								<h3 className="text-xl font-semibold mb-4 text-slate-100">
 									Racha de Práctica
 								</h3>
-								<p className="text-4xl font-bold text-yellow-400">
-									{progress.streak} días
-								</p>
+								<div className="flex items-center space-x-2">
+									<FireIcon className="h-8 w-8 text-yellow-400" />
+									<span className="text-4xl font-bold text-slate-100">
+										{student.practiceStreak} días
+									</span>
+								</div>
+							</div>
+							<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+								<h3 className="text-xl font-semibold mb-4 text-slate-100">
+									Tiempo Total de Práctica
+								</h3>
+								<div className="flex items-center space-x-2">
+									<ClockIcon className="h-8 w-8 text-yellow-400" />
+									<span className="text-4xl font-bold text-slate-100">
+										{Math.floor(student.totalPracticeTime / 60)} horas
+									</span>
+								</div>
+							</div>
+							<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+								<h3 className="text-xl font-semibold mb-4 text-slate-100">
+									Cursos Activos
+								</h3>
+								<div className="flex items-center space-x-2">
+									<BookOpenIcon className="h-8 w-8 text-yellow-400" />
+									<span className="text-4xl font-bold text-slate-100">
+										{courses?.length}
+									</span>
+								</div>
 							</div>
 						</section>
 
-						<section className="bg-slate-800 p-6 rounded-lg shadow-lg">
-							<h2 className="text-2xl font-bold mb-4">Próximas Lecciones</h2>
-							<ul className="space-y-4">
-								{upcomingLessons.map((lesson) => (
-									<li
-										key={lesson.id}
-										className="flex items-center justify-between bg-slate-700 p-4 rounded-md"
+						<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+							<h3 className="text-xl font-semibold mb-4 text-slate-100">
+								Logros Recientes
+							</h3>
+							<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+								{achievements?.map((achievement) => (
+									<div
+										key={achievement.id}
+										className="flex flex-col items-center bg-slate-700 rounded-lg p-4 transition-transform hover:scale-105"
 									>
-										<div>
-											<h4 className="font-semibold">{lesson.name}</h4>
-											<p className="text-sm text-slate-400">
-												{formatDate(lesson.date)}
+										<div className="bg-slate-600 rounded-full p-3 mb-2 relative">
+											{achievement.icon}
+											<img
+												src={achievement.image}
+												alt={achievement.name}
+												className="absolute bottom-0 right-0 w-6 h-6 rounded-full border-2 border-slate-600"
+											/>
+										</div>
+										<span className="text-sm font-semibold text-center text-slate-100">
+											{achievement.name}
+										</span>
+										<span className="text-xs text-center text-slate-300 mt-1">
+											{achievement.description}
+										</span>
+									</div>
+								))}
+							</div>
+						</div>
+
+						<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+							<h3 className="text-xl font-semibold mb-4 text-slate-100">
+								Cursos en Progreso
+							</h3>
+							<div className="space-y-6">
+								{courses?.map((course) => (
+									<div
+										key={course.id}
+										className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 bg-slate-700 rounded-lg p-4 transition-transform hover:scale-102"
+									>
+										<img
+											src={course.image}
+											alt={course.name}
+											className="w-full md:w-32 h-32 object-cover rounded-lg"
+										/>
+										<div className="flex-1">
+											<h3 className="font-semibold text-lg text-slate-100 mb-2">
+												{course.name}
+											</h3>
+											<div className="w-full bg-slate-600 rounded-full h-2.5 mb-2">
+												<div
+													className="bg-yellow-400 h-2.5 rounded-full"
+													style={{ width: `${course.progress}%` }}
+												/>
+											</div>
+											<p className="text-sm text-slate-300 mb-2">
+												{course.completedLessons} de {course.totalLessons}{" "}
+												lecciones completadas
 											</p>
 										</div>
-										<div className="flex items-center">
-											<ClockIcon className="h-4 w-4 mr-2" />
-											<span>{lesson.duration} min</span>
-										</div>
-									</li>
+										<button
+											type="button"
+											onClick={() => navigateToCoursePlayer(course.id)}
+											className="bg-yellow-400 text-slate-900 px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
+										>
+											<PlayIcon className="h-4 w-4 inline-block mr-2" />
+											Continuar
+										</button>
+									</div>
 								))}
-							</ul>
-						</section>
-
-						<section className="bg-slate-800 p-6 rounded-lg shadow-lg">
-							<h2 className="text-2xl font-bold mb-4">
-								Notificaciones Recientes
-							</h2>
-							<ul className="space-y-4">
-								{notifications.map((notification) => (
-									<li
-										key={notification.id}
-										className="bg-slate-700 p-4 rounded-md"
-									>
-										<p>{notification.message}</p>
-										<p className="text-sm text-slate-400 mt-2">
-											{formatDate(notification.date)}
-										</p>
-									</li>
-								))}
-							</ul>
-						</section>
+							</div>
+						</div>
 					</div>
 				)}
 
 				{activeTab === "courses" && (
-					<div className="space-y-8">
-						<h2 className="text-3xl font-bold mb-6">Mis Cursos</h2>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							{courses.map((course) => (
-								<div
-									key={course?.id}
-									className="bg-slate-800 p-6 rounded-lg shadow-lg"
-								>
-									<h3 className="text-xl font-semibold mb-4">{course?.name}</h3>
-									<div className="flex justify-between items-center mb-4">
-										<span>Progreso: {course?.progress}%</span>
-										<div className="w-1/2 bg-slate-700 rounded-full h-2.5">
-											<div
-												className="bg-yellow-400 h-2.5 rounded-full"
-												style={{ width: `${course?.progress}%` }}
-											></div>
-										</div>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{courses?.map((course) => (
+							<div
+								key={course.id}
+								className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden transition-transform hover:scale-105"
+							>
+								<img
+									src={course.image}
+									alt={course.name}
+									className="w-full h-48 object-cover"
+								/>
+								<div className="p-6">
+									<h3 className="text-xl font-semibold text-slate-100 mb-4">
+										{course.name}
+									</h3>
+									<div className="w-full bg-slate-600 rounded-full h-2.5 mb-4">
+										<div
+											className="bg-yellow-400 h-2.5 rounded-full"
+											style={{ width: `${course.progress}%` }}
+										/>
 									</div>
-									<p className="text-sm text-slate-400 mb-4">
-										Próxima lección: {formatDate(course?.nextLesson)}
+									<p className="text-sm text-slate-300 mb-4">
+										{course.completedLessons} de {course.totalLessons} lecciones
+										completadas
 									</p>
 									<button
 										type="button"
-										className="w-full bg-yellow-400 text-slate-900 py-2 px-4 rounded-md hover:bg-yellow-500 transition-colors flex items-center gap-2 justify-center font-medium "
+										className="w-full bg-yellow-400 text-slate-900 px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
+										onClick={() => navigateToCoursePlayer(course?.id)}
 									>
-										<PlayIcon className="h-4 w-4" />
+										<PlayIcon className="h-4 w-4 inline-block mr-2" />
 										Continuar Curso
 									</button>
 								</div>
-							))}
-						</div>
-					</div>
-				)}
-
-				{activeTab === "schedule" && (
-					<div className="space-y-8">
-						<h2 className="text-3xl font-bold mb-6">Mi Horario</h2>
-						<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-							<table className="w-full">
-								<thead>
-									<tr className="text-left">
-										<th className="pb-4">Curso</th>
-										<th className="pb-4">Fecha</th>
-										<th className="pb-4">Duración</th>
-									</tr>
-								</thead>
-								<tbody>
-									{upcomingLessons.map((lesson) => (
-										<tr key={lesson?.id} className="border-t border-slate-700">
-											<td className="py-4">{lesson?.name}</td>
-											<td className="py-4">{formatDate(lesson?.date)}</td>
-											<td className="py-4">{lesson?.duration} min</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
+							</div>
+						))}
 					</div>
 				)}
 
 				{activeTab === "progress" && (
 					<div className="space-y-8">
-						<h2 className="text-3xl font-bold mb-6">Mi Progreso</h2>
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-4">
-									Lecciones Completadas
-								</h3>
-								<div className="flex items-center justify-center">
-									<div className="relative w-40 h-40">
-										<svg
-											aria-hidden="true"
-											className="w-full h-full"
-											viewBox="0 0 36 36"
-										>
-											<path
-												d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"
-												fill="none"
-												stroke="#4B5563"
-												strokeWidth="3"
-											/>
-											<path
-												d="M18 2.0845
-                          a 15.9155 15.9155 0 0 1 0 31.831
-                          a 15.9155 15.9155 0 0 1 0 -31.831"
-												fill="none"
-												stroke="#FBBF24"
-												strokeWidth="3"
-												strokeDasharray={`${(progress?.completedLessons / progress?.totalLessons) * 100}, 100`}
-											/>
-										</svg>
-										<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-											<span className="text-3xl font-bold">
-												{progress?.completedLessons}
+						<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+							<h3 className="text-xl font-semibold mb-4 text-slate-100">
+								Progreso General
+							</h3>
+							<div className="space-y-6">
+								{courses?.map((course) => (
+									<div key={course.id} className="bg-slate-700 p-4 rounded-lg">
+										<div className="flex justify-between items-center mb-2">
+											<span className="text-slate-100 font-semibold">
+												{course.name}
 											</span>
-											<span className="text-sm block">
-												de {progress?.totalLessons}
+											<span className="text-yellow-400 font-bold">
+												{course.progress}%
 											</span>
 										</div>
+										<div className="w-full bg-slate-600 rounded-full h-2.5">
+											<div
+												className="bg-yellow-400 h-2.5 rounded-full"
+												style={{ width: `${course.progress}%` }}
+											/>
+										</div>
+										<p className="text-sm text-slate-300 mt-2">
+											{course.completedLessons} de {course.totalLessons}{" "}
+											lecciones completadas
+										</p>
 									</div>
-								</div>
+								))}
 							</div>
-							<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-								<h3 className="text-xl font-semibold mb-4">
-									Tiempo Total de Práctica
-								</h3>
-								<div className="text-center">
-									<p className="text-5xl font-bold text-yellow-400">
-										{Math.floor(progress?.totalPracticeTime / 60)}
+						</div>
+
+						<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+							<h3 className="text-xl font-semibold mb-4 text-slate-100">
+								Estadísticas de Aprendizaje
+							</h3>
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+								<div className="bg-slate-700 p-4 rounded-lg">
+									<h4 className="font-semibold text-slate-100 mb-2">
+										Tiempo Total de Estudio
+									</h4>
+									<p className="text-3xl font-bold text-yellow-400">
+										{Math.floor(student.totalPracticeTime / 60)} horas
 									</p>
-									<p className="text-xl">horas</p>
+								</div>
+								<div className="bg-slate-700 p-4 rounded-lg">
+									<h4 className="font-semibold text-slate-100 mb-2">
+										Lecciones Completadas
+									</h4>
+									<p className="text-3xl font-bold text-yellow-400">
+										{courses?.reduce(
+											(total, course) => total + course.completedLessons,
+											0,
+										)}
+									</p>
 								</div>
 							</div>
 						</div>
-						<div className="bg-slate-800 p-6 rounded-lg shadow-lg">
-							<h3 className="text-xl font-semibold mb-4 flex items-center gap-2 justify-between">
-								Progreso por Curso <AwardIcon className="h-8 w-8" />
+
+						<div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+							<h3 className="text-xl font-semibold mb-4 text-slate-100">
+								Logros Desbloqueados
 							</h3>
-							{courses.map((course) => (
-								<div key={course?.id} className="mb-4">
-									<div className="flex justify-between items-center mb-2">
-										<span>{course?.name}</span>
-										<span>{course?.progress}%</span>
+							<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+								{achievements?.map((achievement) => (
+									<div
+										key={achievement.id}
+										className="bg-slate-700 p-4 rounded-lg flex flex-col items-center text-center"
+									>
+										<div className="bg-slate-600 rounded-full p-3 mb-2 relative">
+											{achievement.icon}
+											<img
+												src={achievement.image}
+												alt={achievement.name}
+												className="absolute bottom-0 right-0 w-6 h-6 rounded-full border-2 border-slate-600"
+											/>
+										</div>
+										<span className="text-sm font-semibold text-slate-100">
+											{achievement.name}
+										</span>
+										<span className="text-xs text-slate-300 mt-1">
+											{achievement.description}
+										</span>
 									</div>
-									<div className="w-full bg-slate-700 rounded-full h-2.5">
-										<div
-											className="bg-yellow-400 h-2.5 rounded-full"
-											style={{ width: `${course?.progress}%` }}
-										></div>
-									</div>
-								</div>
-							))}
+								))}
+							</div>
 						</div>
 					</div>
 				)}

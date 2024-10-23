@@ -1,3 +1,3 @@
-export const transformToSlug = titleToTransform => {
+export const transformToSlug = (titleToTransform: string) => {
     if(titleToTransform) return  titleToTransform.split(" ").join("-").toLowerCase();
 }

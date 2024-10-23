@@ -34,14 +34,14 @@ export default function CreateCourseForm() {
 		}));
 	};
 
-	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files && e.target.files[0]) {
-			setFormData((prevState) => ({
-				...prevState,
-				image: e.target.files![0],
-			}));
-		}
-	};
+	// const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	// 	if (e.target.files && e.target.files[0]) {
+	// 		setFormData((prevState) => ({
+	// 			...prevState,
+	// 			image: e.target.files![0],
+	// 		}));
+	// 	}
+	// };
 
 	const handleAddCategory = () => {
 		if (formData.newCategory && !categories.includes(formData.newCategory)) {
@@ -127,8 +127,8 @@ export default function CreateCourseForm() {
 									onChange={handleChange}
 								>
 									<option value="">Selecciona una categoría</option>
-									{categories.map((cat, index) => (
-										<option key={index} value={cat}>
+									{categories.map((cat) => (
+										<option key={cat} value={cat}>
 											{cat}
 										</option>
 									))}
@@ -221,7 +221,6 @@ export default function CreateCourseForm() {
 										name="image"
 										type="file"
 										className="hidden"
-										onChange={handleImageChange}
 									/>
 								</label>
 							</div>

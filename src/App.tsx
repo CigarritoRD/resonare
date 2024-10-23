@@ -7,11 +7,11 @@ import EstudianteDashboard from "./pages/estudiantes/estudiante-dashboard";
 import Planes from "./pages/Planes/planes";
 import HomeProtected from "./pages/Home/home-protected";
 import CursoDetalle from "./pages/Curso/Curso";
-import VideoPlayer from "./pages/Curso/curso-en-progreso";
 import ProfesoresDetalles from "./pages/profesores/profesor-detalle";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ProfesorDashboard from "./pages/profesores/profesor-dashboard";
 import CreateCourseForm from "./pages/profesores/crear-nuevo-curso";
+import CoursePlayer from "./pages/reproductor/course-player";
 
 const App = () => {
 	const location = useLocation();
@@ -19,26 +19,6 @@ const App = () => {
 	const dashboard = location.pathname.includes("dashboard");
 	console.log(dashboard);
 
-	const lessons = [
-		{
-			id: 1,
-			title: "Lección 1: Cómo tocar escalas en piano",
-			url: "ZiBVB6dVDdw", // Video de ejemplo reproducible
-			duration: "5:30",
-		},
-		{
-			id: 2,
-			title: "Lección 2: Técnicas avanzadas de guitarra",
-			url: "kShyDBXyFbk", // Video de ejemplo reproducible
-			duration: "8:15",
-		},
-		{
-			id: 3,
-			title: "Lección 3: Introducción al ritmo en batería",
-			url: "kLKhWtq1vn8", // Otro video de ejemplo reproducible
-			duration: "7:45",
-		},
-	];
 	const isProfesor = false;
 	return (
 		<>
@@ -57,17 +37,17 @@ const App = () => {
 						element={<CreateCourseForm />}
 					/>
 
-					{/* rutas privadas */}
+					{/* rutas privadas estudiantes */}
 					<Route element={<HomeProtected />}>
 						<Route path="/home" element={<Home />} />
 						<Route path="dashboard" element={<EstudianteDashboard />} />
 						<Route
 							path="/curso/:id/video/:cursoNombre"
-							element={<VideoPlayer lessons={lessons} />}
+							element={<CursoDetalle />}
 						/>
 						<Route
 							path="/curso/:id/video/:cursoNombre/:videoNombre"
-							element={<VideoPlayer lessons={lessons} />}
+							element={<CoursePlayer />}
 						/>
 					</Route>
 					<Route path="/iniciar-sesion" element={<LogIn />} />
