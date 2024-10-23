@@ -3,12 +3,12 @@ import {
 	SearchIcon,
 	PlusIcon,
 	UploadIcon,
-	Edit,
-	Trash2,
+	EditIcon,
+	Trash2Icon,
 	ChevronDownIcon,
-	ChevronUp,
-	Eye,
-	Save,
+	ChevronUpIcon,
+	EyeIcon,
+	SaveIcon,
 	UsersIcon,
 	StarIcon,
 } from "../../components/icons/icons";
@@ -290,7 +290,7 @@ const MisCursos = () => {
 										type="button"
 										className="bg-green-500 text-white rounded-lg px-4 py-2 font-semibold hover:bg-green-600 transition-colors flex items-center"
 									>
-										<Save className="w-4 h-4 mr-2" />
+										<SaveIcon className="w-4 h-4 mr-2" />
 										Guardar Cambios
 									</button>
 								</div>
@@ -319,7 +319,7 @@ const MisCursos = () => {
 											>
 												<h4 className="text-lg font-semibold">{topic.title}</h4>
 												{expandedTopics[topic.id] ? (
-													<ChevronUp />
+													<ChevronUpIcon className="h-4 w-4" />
 												) : (
 													<ChevronDownIcon className="h-4 w-4" />
 												)}
@@ -352,19 +352,19 @@ const MisCursos = () => {
 																	type="button"
 																	className="text-yellow-400 hover:text-yellow-500 mr-2"
 																>
-																	<Eye className="w-4 h-4" />
+																	<EyeIcon className="w-4 h-4" />
 																</button>
 																<button
 																	type="button"
 																	className="text-blue-400 hover:text-blue-500 mr-2"
 																>
-																	<Edit className="w-4 h-4" />
+																	<EditIcon className="w-4 h-4" />
 																</button>
 																<button
 																	type="button"
 																	className="text-red-400 hover:text-red-500"
 																>
-																	<Trash2 className="w-4 h-4" />
+																	<Trash2Icon className="w-4 h-4" />
 																</button>
 															</div>
 														</div>
