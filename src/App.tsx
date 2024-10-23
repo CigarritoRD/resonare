@@ -12,6 +12,8 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ProfesorDashboard from "./pages/profesores/profesor-dashboard";
 import CreateCourseForm from "./pages/profesores/crear-nuevo-curso";
 import CoursePlayer from "./pages/reproductor/course-player";
+import MisCursos from "./pages/profesores/mis-cursos";
+import Estudiantes from "./pages/profesores/estudiantes";
 
 const App = () => {
 	const location = useLocation();
@@ -19,11 +21,10 @@ const App = () => {
 	const dashboard = location.pathname.includes("dashboard");
 	console.log(dashboard);
 
-	const isProfesor = false;
 	return (
 		<>
 			<header className="sticky top-0 bg-[#111620] z-50 shadow-lg">
-				{(!video || !isProfesor) && !dashboard && <Navbar />}
+				{!video && <Navbar />}
 			</header>
 			<div className="bg-[#111620]">
 				<Routes>
@@ -33,6 +34,14 @@ const App = () => {
 					<Route path="/profesor/:nombre" element={<ProfesoresDetalles />} />
 					<Route path="/profesor/dashboard" element={<ProfesorDashboard />} />
 					<Route
+						path="/profesor/dashboard/mis-cursos"
+						element={<MisCursos />}
+					/>
+					<Route
+						path="/profesor/dashboard/estudiantes"
+						element={<Estudiantes />}
+					/>
+					<Route
 						path="/profesor/dashboard/crear-curso"
 						element={<CreateCourseForm />}
 					/>
@@ -41,12 +50,9 @@ const App = () => {
 					<Route element={<HomeProtected />}>
 						<Route path="/home" element={<Home />} />
 						<Route path="dashboard" element={<EstudianteDashboard />} />
+						<Route path="/curso/:id/:cursoNombre" element={<CursoDetalle />} />
 						<Route
-							path="/curso/:id/video/:cursoNombre"
-							element={<CursoDetalle />}
-						/>
-						<Route
-							path="/curso/:id/video/:cursoNombre/:videoNombre"
+							path="/curso/:id/:cursoNombre/video"
 							element={<CoursePlayer />}
 						/>
 					</Route>

@@ -37,7 +37,7 @@ const CursoDetalle = () => {
 									{cursoParaMostrar[0]?.descripcion}
 								</span>
 								<Link
-									to={`video/${transformToSlug(cursoParaMostrar[0]?.titulo)}`}
+									to={`/curso/${id}/${transformToSlug(cursoParaMostrar[0]?.titulo)}/video`}
 								>
 									<button
 										type="button"

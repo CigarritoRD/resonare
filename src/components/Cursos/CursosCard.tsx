@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import type { Database } from "../../types/supabase";
+import { transformToSlug } from "../../utils/transform-a-slug";
 
 const CursosCard = ({
 	curso,
 }: { curso: Database["public"]["Tables"]["cursos"]["Row"] }) => {
 	return (
-		<Link to={`/curso/${curso.id}`}>
+		<Link to={`/curso/${curso.id}/${transformToSlug(curso.titulo)}`}>
 			<div className=" group  cursor-pointer card w-[320px] hover:bg-slate-900 duration-200 max-h-[400px] overflow-hidden  shadow-xl  rounded-lg ">
 				<header className="h-[200px] overflow-hidden ">
 					<img

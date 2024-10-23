@@ -192,13 +192,13 @@ const CoursePlayer = () => {
 
 	return (
 		<div
-			className={`min-h-screen bg-slate-900 text-slate-100 flex ${isFullscreen ? "flex-col" : ""}`}
+			className={`min-h-screen p-3 bg-slate-900 text-slate-100 flex ${isFullscreen ? "flex-col" : ""}`}
 		>
 			{/* Área principal de contenido */}
-			<div className={`flex-1 p-4 ${isFullscreen ? "w-full" : "w-3/4"}`}>
+			<div className={`flex-1 px-2 ${isFullscreen ? "w-full" : "w-3/4"}`}>
 				{/* Reproductor de video */}
-				<div className="bg-slate-800 rounded-lg overflow-hidden mb-4">
-					<div className="aspect-w-16 aspect-h-9">
+				<div className="bg-slate-800 rounded-lg overflow-hidden">
+					<div className=" aspect-video min-w-3/4">
 						<ReactPlayer
 							ref={playerRef}
 							url={
@@ -213,7 +213,7 @@ const CoursePlayer = () => {
 							onEnded={handleEnded}
 						/>
 					</div>
-					<div className="p-4">
+					<div className="px-4 py-2">
 						<div className="flex items-center justify-between mb-4">
 							<div className="flex items-center space-x-4">
 								<button
@@ -291,16 +291,17 @@ const CoursePlayer = () => {
 							</div>
 						</div>
 						<div className="bg-slate-700 h-1 rounded-full">
-							<div className="bg-yellow-400 h-1 rounded-full w-1/3" />
+							<div className="bg-yellow-400 h-1 rounded-full" />
 						</div>
 					</div>
 				</div>
 
 				{/* Título y descripción del subtema actual */}
-				<h2 className="text-2xl font-bold mb-2">
+
+				<h2 className="text-2xl font-bold  px-4 p-2">
 					{course.topics[currentTopic].subtopics[currentSubtopic].title}
 				</h2>
-				<p className="text-slate-400 mb-4">
+				<p className="text-slate-400  px-4 p-2">
 					Duración:{" "}
 					{course.topics[currentTopic].subtopics[currentSubtopic].duration}
 				</p>
@@ -324,7 +325,6 @@ const CoursePlayer = () => {
 						/>
 					)}
 				</div>
-
 				{/* Cuestionario */}
 				{showQuiz && (
 					<div className="bg-slate-800 rounded-lg p-4 mb-4">
@@ -337,15 +337,15 @@ const CoursePlayer = () => {
 								<div className="space-y-2">
 									<label className="flex items-center">
 										<input type="radio" name="q1" value="a" className="mr-2" />
-										<span>A) Mi</span>
+										<span>A Mi</span>
 									</label>
 									<label className="flex items-center">
 										<input type="radio" name="q1" value="b" className="mr-2" />
-										<span>B) La</span>
+										<span>B La</span>
 									</label>
 									<label className="flex items-center">
 										<input type="radio" name="q1" value="c" className="mr-2" />
-										<span>C) Re</span>
+										<span>C Re</span>
 									</label>
 								</div>
 							</div>
@@ -450,7 +450,7 @@ const CoursePlayer = () => {
 
 			{/* Sidebar con lista de temas */}
 			<div
-				className={`bg-slate-800 p-4 overflow-y-auto ${isFullscreen ? "w-full" : "w-1/4"}`}
+				className={`bg-slate-800 p-4 rounded-lg overflow-y-auto  ${isFullscreen ? "w-full" : "w-1/4 max-w-sm"}`}
 			>
 				<h2 className="text-2xl font-bold mb-4">{course.title}</h2>
 				<p className="text-slate-400 mb-4">Instructor: {course.instructor}</p>
