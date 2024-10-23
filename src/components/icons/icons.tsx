@@ -741,3 +741,111 @@ export const SendIcon = ({ className }: { className: string }) => {
 		</svg>
 	);
 };
+
+export const EyeIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-eye`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+			<circle cx={12} cy={12} r={3} />
+		</svg>
+	);
+};
+
+export const EditIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-edit`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+			<line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+		</svg>
+	);
+};
+
+export const Trash2Icon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-trash-2`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<polyline points="3 6 5 6 21 6" />
+			<path d="M19 6v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h2" />
+			<polyline points="15 3 21 3 21 9" />
+			<line x1="9" y1="15" x2="15" y2="15" />
+		</svg>
+	);
+};
+
+export const SaveIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-save`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M19 21H5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h14l5 5v11a2 2 0 0 1 -2 2z" />
+			<polyline points="17 21 17 13 7 13 7 21" />
+			<polyline points="7 3 7 8 15 8" />
+		</svg>
+	);
+};
+
+export const ChevronUpIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-chevron-up`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<polyline points="17 11 12 6 7 11" />
+			<polyline points="17 18 12 13 7 18" />
+		</svg>
+	);
+};
