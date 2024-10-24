@@ -13,7 +13,7 @@ import avatar from "../../assets/defaultavatar.svg";
 import Logo from "../../components/Header/Logo";
 
 export default function TeacherDashboard() {
-	const [courses, setCourses] = useState([
+	const [courses] = useState([
 		{
 			id: 1,
 			name: "Introducción a la Guitarra",

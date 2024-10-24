@@ -48,7 +48,7 @@ const MisCursos = () => {
 	const [courses, setCourses] = useState<Course[]>([]);
 	const [searchTerm, setSearchTerm] = useState<string>("");
 	const [selectedCourse, setSelectedCourse] = useState<Course | undefined>();
-	const [setSelectedTopic] = useState<Topic | null>(null); // Corregido el uso de este estado
+	const [, setSelectedTopic] = useState<Topic | null>(null); // Corregido el uso de este estado
 	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const [uploadError, setUploadError] = useState<string>("");
 	const [newTopicTitle, setNewTopicTitle] = useState<string>("");
