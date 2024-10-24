@@ -52,7 +52,7 @@ const Professores = () => {
 								<div className="overflow-hidden">
 									<img
 										className="w-full h-[350px]  group-hover:scale-110 transition-all ease-in-out duration-500 object-top object-cover rounded-lg "
-										src={`/public/${professor.image}`}
+										src={`${professor.image}`}
 										alt={`Foto de ${professor.name}`}
 									/>
 								</div>
