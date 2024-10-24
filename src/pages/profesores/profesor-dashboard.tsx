@@ -3,14 +3,12 @@ import {
 	BellIcon,
 	BookOpenIcon,
 	ChevronDownIcon,
-	DashboardIcon,
 	LogOutIcon,
-	MusicIcon,
 	StarIcon,
 	UsersIcon,
 } from "../../components/icons/icons";
 import avatar from "../../assets/defaultavatar.svg";
-import Logo from "../../components/Header/Logo";
+import useUser from "../../hooks/useUser";
 
 export default function TeacherDashboard() {
 	const [courses] = useState([
@@ -37,46 +35,14 @@ export default function TeacherDashboard() {
 		},
 	]);
 	const [showDropdown, setShowDropdown] = useState(false);
+	const { logout } = useUser();
+
+	const handleLogout = async () => {
+		await logout();
+	};
 
 	return (
-		<div className="flex h-screen bg-slate-900 text-slate-100">
-			{/* Sidebar */}
-			<aside className="w-64 bg-slate-800 shadow-md">
-				<div className="p-4 capitalize">
-					<Logo />
-				</div>
-				<nav className="mt-6 flex flex-col gap-4">
-					<button
-						type="button"
-						className="flex items-center w-full justify-start px-4 py-2 text-left bg-slate-800 hover:bg-slate-700"
-					>
-						<DashboardIcon className="mr-2 h-4 w-4" />
-						Dashboard
-					</button>
-					<button
-						type="button"
-						className="flex items-center w-full justify-start px-4 py-2 text-left bg-slate-800 hover:bg-slate-700"
-					>
-						<BookOpenIcon className="mr-2 h-4 w-4" />
-						Mis Cursos
-					</button>
-					<button
-						type="button"
-						className="flex items-center w-full justify-start px-4 py-2 text-left bg-slate-800 hover:bg-slate-700"
-					>
-						<UsersIcon className="mr-2 h-4 w-4" />
-						Estudiantes
-					</button>
-					<button
-						type="button"
-						className="flex items-center w-full justify-start px-4 py-2 text-left bg-slate-800 hover:bg-slate-700"
-					>
-						<MusicIcon className="mr-2 h-4 w-4" />
-						Recursos
-					</button>
-				</nav>
-			</aside>
-
+		<div className="flex min-h-screen bg-slate-900 text-slate-100 flex-1 ">
 			{/* Main Content */}
 			<main className="flex-1 overflow-y-auto p-8">
 				<div className="flex items-center justify-between mb-8">
@@ -121,6 +87,7 @@ export default function TeacherDashboard() {
 										Configuración
 									</button>
 									<button
+										onClick={handleLogout}
 										type="button"
 										className="flex items-center text-red-600 font-bold px-4 py-2 text-left hover:bg-slate-700 w-full"
 									>

@@ -36,7 +36,8 @@ const LogIn = () => {
 				emailInput: String(email),
 				passwordInput: String(password),
 			});
-			navigate("/home");
+			if (user?.user_metadata?.rol === "estudiante") return navigate("/home");
+			navigate("/dashboard");
 		} catch (error) {
 			if (error instanceof Error) {
 				console.error(error.message);

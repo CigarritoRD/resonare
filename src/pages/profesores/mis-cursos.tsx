@@ -220,7 +220,7 @@ const MisCursos = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-slate-900 text-slate-100 p-8">
+		<div className="min-h-screen bg-slate-900 text-slate-100 p-8 flex-1">
 			<h1 className="text-4xl font-bold mb-8">Mis Cursos</h1>
 			<div className="flex mb-6">
 				<div className="relative flex-grow mr-4">

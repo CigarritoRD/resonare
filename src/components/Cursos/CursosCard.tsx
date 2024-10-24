@@ -5,12 +5,13 @@ import { transformToSlug } from "../../utils/transform-a-slug";
 const CursosCard = ({
 	curso,
 }: { curso: Database["public"]["Tables"]["cursos"]["Row"] }) => {
+	console.log(curso.miniatura);
 	return (
 		<Link to={`/curso/${curso.id}/${transformToSlug(curso.titulo)}`}>
 			<div className=" group  cursor-pointer card w-[320px] hover:bg-slate-900 duration-200 max-h-[400px] overflow-hidden  shadow-xl  rounded-lg ">
 				<header className="h-[200px] overflow-hidden ">
 					<img
-						src={`/${curso.miniatura}`}
+						src={`https://esufcalrucmbetiblaoz.supabase.co/storage/v1/object/public/cursos-avatar/${curso.miniatura}`}
 						alt="Curso de React"
 						className="card-img-top w-full h-full object-cover group-hover:scale-110 transition-all ease-linear duration-200"
 					/>

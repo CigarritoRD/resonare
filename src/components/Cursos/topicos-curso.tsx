@@ -48,18 +48,18 @@ const TopicosDelCursos = ({
 			</h2>
 			<ul className="flex flex-col gap-4 text-gray-600">
 				{topics.map((topic) => {
-					const linkVideo = transformToSlug(topic.title);
-					const cursoNombre = transformToSlug(curso.titulo);
+					const linkVideo = transformToSlug(topic?.title);
+					const cursoNombre = transformToSlug(curso?.titulo);
 					return (
 						<li
-							key={topic.title}
+							key={topic?.title}
 							className="text-lg hover:bg-slate-700 duration-200 border border-slate-600  px-6 py-2 rounded-lg bg-slate-800"
 						>
 							<Link to={`/curso/${id}/video/${cursoNombre}/${linkVideo}`}>
 								<h3 className="text-xl font-semibold text-gray-100">
-									{topic.title}
+									{topic?.title}
 								</h3>
-								<p className="text-gray-200 text-sm">{topic.description}</p>
+								<p className="text-gray-200 text-sm">{topic?.description}</p>
 							</Link>
 						</li>
 					);

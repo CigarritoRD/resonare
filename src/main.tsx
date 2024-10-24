@@ -18,6 +18,5 @@ if (element)
 					</CursoContextProvider>
 				</AuthContextProvider>
 			</BrowserRouter>
-			,
 		</StrictMode>,
 	);

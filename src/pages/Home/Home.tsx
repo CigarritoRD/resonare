@@ -7,6 +7,7 @@ import { CircularProgress } from "@mui/material";
 import useCursos from "../../hooks/useCursos";
 import { useEffect, useState } from "react";
 import type { Database } from "../../types/supabase";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
 	const { user, isLoading: isUserLoading } = useUser();
@@ -41,6 +42,10 @@ const Home = () => {
 				{error}
 			</div>
 		);
+	}
+
+	if (user?.user_metadata?.rol === "profesor") {
+		return <Navigate to="/dashboard-profesores" />;
 	}
 
 	return (

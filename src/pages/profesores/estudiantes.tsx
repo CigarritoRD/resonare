@@ -140,7 +140,7 @@ const Estudiantes = () => {
 	}
 
 	return (
-		<div className="min-h-screen bg-slate-900 text-slate-100 p-8">
+		<div className="min-h-screen bg-slate-900 text-slate-100 p-8 flex-1">
 			<h1 className="text-4xl font-bold mb-8">Estudiantes</h1>
 			<div className="flex mb-6">
 				<div className="relative flex-grow mr-4">
@@ -176,8 +176,8 @@ const Estudiantes = () => {
 										: "hover:bg-slate-700"
 								}`}
 							>
-								<button
-									type="button"
+								{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+								<div
 									className="flex justify-between items-center"
 									onClick={() => handleStudentSelect(student)}
 								>
@@ -196,7 +196,7 @@ const Estudiantes = () => {
 											<ChevronDownIcon className="h-4 w-4" />
 										)}
 									</button>
-								</button>
+								</div>
 								{expandedStudents[student.id] && (
 									<div className="mt-4 space-y-2">
 										<p className="text-sm">
