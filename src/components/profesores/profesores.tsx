@@ -42,17 +42,17 @@ const Professores = () => {
 			<div className="container mx-auto">
 				<SeccionTitulo titulo="Nuestros Profesores" />
 				<div className="flex flex-wrap justify-center gap-8 mt-14">
-					{professors.map((professor, index) => (
+					{professors.map((professor) => (
 						<Link
 							to={professor.profileLink}
 							className="w-[350px] group overflow-hidden rounded-lg shadow-lg"
-							key={index}
+							key={professor.name}
 						>
 							<div className="bg-slate-50 h-full rounded-lg w-full ">
 								<div className="overflow-hidden">
 									<img
 										className="w-full h-[350px]  group-hover:scale-110 transition-all ease-in-out duration-500 object-top object-cover rounded-lg "
-										src={`${professor.image}.jpg`}
+										src={`${professor.image}`}
 										alt={`Foto de ${professor.name}`}
 									/>
 								</div>
