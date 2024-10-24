@@ -21,7 +21,7 @@ import CursoDetalle from "./pages/Curso/detalles-del-curso";
 const App = () => {
 	const location = useLocation();
 	const video = location.pathname.includes("video");
-	const { user, isLoading } = useUser();
+	const { user } = useUser();
 	console.log(user?.user_metadata?.rol);
 
 	return (
