@@ -10,11 +10,14 @@ import CursoContextProvider from "./context/cursos-context.tsx";
 const element = document.getElementById("root");
 if (element)
 	createRoot(element).render(
-		<BrowserRouter>
-			<AuthContextProvider>
-				<CursoContextProvider>
-					<App />
-				</CursoContextProvider>
-			</AuthContextProvider>
-		</BrowserRouter>,
+		<StrictMode>
+			<BrowserRouter>
+				<AuthContextProvider>
+					<CursoContextProvider>
+						<App />
+					</CursoContextProvider>
+				</AuthContextProvider>
+			</BrowserRouter>
+			,
+		</StrictMode>,
 	);

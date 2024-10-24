@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { transformToSlug } from "../../utils/transform-a-slug";
+import type { Database } from "../../types/supabase";
 
-const TopicosDelCursos = ({ curso = {}, id = "" }) => {
+const TopicosDelCursos = ({
+	curso,
+	id,
+}: {
+	curso: Database["public"]["Tables"]["cursos"]["Row"];
+	id: string | undefined;
+}) => {
 	const topics = [
 		{
 			title: "Introducción a la guitarra",

@@ -27,7 +27,10 @@ const Planes = () => {
 							<li className="mb-6 text-lg">✘ Certificaciones</li>
 						</ul>
 					</div>
-					<button className="bg-green-500 text-white text-xl px-6 py-4 rounded-lg w-full hover:bg-green-600 transition duration-300">
+					<button
+						type="button"
+						className="bg-green-500 text-white text-xl px-6 py-4 rounded-lg w-full hover:bg-green-600 transition duration-300"
+					>
 						Suscríbete a Básico
 					</button>
 				</div>
@@ -48,7 +51,10 @@ const Planes = () => {
 							<li className="mb-6 text-lg">✘ Certificaciones avanzadas</li>
 						</ul>
 					</div>
-					<button className="bg-yellow-500 text-xl text-white px-6 py-4 rounded-lg w-full hover:bg-yellow-600 transition duration-300">
+					<button
+						type="button"
+						className="bg-yellow-500 text-xl text-white px-6 py-4 rounded-lg w-full hover:bg-yellow-600 transition duration-300"
+					>
 						Suscríbete a Intermedio
 					</button>
 				</div>
@@ -73,7 +79,10 @@ const Planes = () => {
 							<li className="mb-6 text-lg">✔ Acceso a eventos exclusivos</li>
 						</ul>
 					</div>
-					<button className="bg-red-500 text-xl text-white px-6 py-4 rounded-lg w-full hover:bg-red-600 transition duration-300">
+					<button
+						type="button"
+						className="bg-red-500 text-xl text-white px-6 py-4 rounded-lg w-full hover:bg-red-600 transition duration-300"
+					>
 						Suscríbete a Avanzado
 					</button>
 				</div>

@@ -6,7 +6,7 @@ import Navbar from "./components/Header/Navbar/Navbar";
 import EstudianteDashboard from "./pages/estudiantes/estudiante-dashboard";
 import Planes from "./pages/Planes/planes";
 import HomeProtected from "./pages/Home/home-protected";
-import CursoDetalle from "./pages/Curso/Curso";
+import CursoDetalle from "./pages/Curso/curso";
 import ProfesoresDetalles from "./pages/profesores/profesor-detalle";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ProfesorDashboard from "./pages/profesores/profesor-dashboard";

@@ -64,14 +64,13 @@ interface cursoContextType {
 const CursoContextProvider = ({
 	children,
 }: { children: ReactNode }): JSX.Element => {
-	const [cursos, setCursos] = useState<
-		Database["public"]["Tables"]["cursos"]["Row"][]
-	>([]);
+	const [cursos, setCursos] = useState<Cursos>([]);
 
-	const obtenerCursos = async () => {
+	const obtenerCursos = async (): Promise<Cursos> => {
 		try {
 			const cursos = await obtenerTodosLosCursos();
-			return cursos;
+			if (cursos && cursos.length > 0) return cursos;
+			return [];
 		} catch (error) {
 			console.error("Error al obtener los cursos:", error);
 			throw new Error("Error al obtener los cursos");
@@ -90,12 +89,8 @@ const CursoContextProvider = ({
 		fetchCursos();
 	}, []);
 
-	// Estudiantes
-
-	// Obtiene todos los cursos suscritos por el alumno
-	const obtenerCursosSuscrito = async (alumno_id: string) => {
+	const obtenerCursosSuscrito = async (alumno_id: string): Promise<Cursos> => {
 		if (!alumno_id) throw new Error("Alumno ID no encontrado");
-		console.log(alumno_id);
 		try {
 			const { data, error } = await supabase
 				.from("suscripciones")
@@ -113,6 +108,7 @@ const CursoContextProvider = ({
 				const resultados = cursos ? adaptarCursos({ cursos }) : [];
 				return resultados;
 			}
+			return [];
 		} catch (error) {
 			console.error("Error al obtener cursos suscritos:", error);
 			return [];
@@ -122,41 +118,39 @@ const CursoContextProvider = ({
 	const suscribirteACurso = async ({
 		alumno_id,
 		curso_id,
-	}: { alumno_id: string; curso_id: string }) => {
+	}: { alumno_id: string; curso_id: string }): Promise<null> => {
 		try {
-			const { data, error } = await supabase.from("suscripciones").insert({
+			const { error } = await supabase.from("suscripciones").insert({
 				alumno_id,
 				curso_id,
 			});
 			if (error) {
 				throw new Error(`Error al suscribirte al curso: ${error.message}`);
 			}
-			return data;
+			return null;
 		} catch (error) {
 			console.error("Error al suscribirte al curso:", error);
 			throw new Error("Error al suscribirte al curso");
 		}
 	};
 
-	// Eliminar curso suscrito por id
-	const eliminarCursoSuscrito = async (id: string) => {
+	const eliminarCursoSuscrito = async (id: string): Promise<null> => {
 		try {
-			const { data, error } = await supabase
+			const { error } = await supabase
 				.from("suscripciones")
 				.delete()
 				.eq("id", id);
 			if (error) {
 				throw new Error(`Error al eliminar el curso: ${error.message}`);
 			}
-			return data;
+			return null;
 		} catch (error) {
 			console.error("Error al eliminar el curso:", error);
 			throw new Error("Error al eliminar el curso");
 		}
 	};
 
-	// Buscar cursos por palabra clave
-	const buscarCursos = async (palabra: string) => {
+	const buscarCursos = async (palabra: string): Promise<Cursos> => {
 		try {
 			const { data, error } = await supabase
 				.from("cursos")
@@ -173,7 +167,6 @@ const CursoContextProvider = ({
 		}
 	};
 
-	// Profesores
 	const crearCurso = async ({
 		titulo,
 		descripcion,
@@ -188,9 +181,9 @@ const CursoContextProvider = ({
 		miniatura: string;
 		estado: string;
 		membresia_requerida: number;
-	}) => {
+	}): Promise<null> => {
 		try {
-			const { data, error } = await supabase.from("cursos").insert({
+			const { error } = await supabase.from("cursos").insert({
 				titulo,
 				descripcion,
 				id_profesor,
@@ -202,7 +195,7 @@ const CursoContextProvider = ({
 			if (error) {
 				throw new Error(`Error al crear un nuevo curso: ${error.message}`);
 			}
-			return data;
+			return null;
 		} catch (error) {
 			console.error("Error al crear curso:", error);
 			throw new Error("Error al crear un nuevo curso");
@@ -223,9 +216,9 @@ const CursoContextProvider = ({
 		miniatura: string;
 		estado: string;
 		membresia_requerida: number;
-	}) => {
+	}): Promise<null> => {
 		try {
-			const { data, error } = await supabase.from("cursos").update({
+			const { error } = await supabase.from("cursos").update({
 				titulo,
 				descripcion,
 				id_profesor,
@@ -237,23 +230,20 @@ const CursoContextProvider = ({
 			if (error) {
 				throw new Error(`Error al editar el curso: ${error.message}`);
 			}
-			return data;
+			return null;
 		} catch (error) {
 			console.error("Error al editar el curso:", error);
 			throw new Error("Error al editar el curso");
 		}
 	};
 
-	const eliminarCurso = async (id: string) => {
+	const eliminarCurso = async (id: string): Promise<null> => {
 		try {
-			const { data, error } = await supabase
-				.from("cursos")
-				.delete()
-				.eq("id", id);
+			const { error } = await supabase.from("cursos").delete().eq("id", id);
 			if (error) {
 				throw new Error(`Error al eliminar el curso: ${error.message}`);
 			}
-			return data;
+			return null;
 		} catch (error) {
 			console.error("Error al eliminar el curso:", error);
 			throw new Error("Error al eliminar el curso");

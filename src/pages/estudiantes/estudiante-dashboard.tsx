@@ -33,7 +33,7 @@ const StudentDashboard = () => {
 	const [activeTab, setActiveTab] = useState("overview");
 	const [courses, setCourses] = useState<course[]>();
 	const [achievements, setAchievements] = useState<Achievement[]>();
-	const [student, setStudent] = useState({
+	const [student] = useState({
 		name: "Juan Pérez",
 		email: "juan.perez@example.com",
 		avatar: "https://i.pravatar.cc/150?img=68",

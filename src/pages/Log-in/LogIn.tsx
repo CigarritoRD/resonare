@@ -5,9 +5,14 @@ import { loginSchema } from "../../schemas/login-schema";
 import { useState } from "react";
 import LoaderSpiner from "../../components/loader-spiner";
 
+interface Errors {
+	email?: string;
+	password?: string;
+}
+
 const LogIn = () => {
 	const navigate = useNavigate();
-	const [errors, setErrors] = useState({});
+	const [errors, setErrors] = useState<Errors>({});
 	const { login, user, error, isLoading } = useUser();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,13 +20,16 @@ const LogIn = () => {
 		const formulario = new FormData(e.currentTarget);
 		const formdata = Object.fromEntries(formulario.entries());
 		const { email, password } = formdata;
+
 		const result = loginSchema.safeParse({
 			email: email,
 			password: password,
 		});
+
 		if (!result.success) {
-			return setErrors(result.error.flatten().fieldErrors);
+			return setErrors(result.error.flatten().fieldErrors as Errors);
 		}
+
 		try {
 			setErrors({});
 			await login({
@@ -31,9 +39,10 @@ const LogIn = () => {
 			navigate("/home");
 		} catch (error) {
 			if (error instanceof Error) {
-				throw new Error(error.message);
+				console.error(error.message);
+			} else {
+				console.error("Error desconocido al intentar iniciar sesión");
 			}
-			throw new Error("Error Desconocido al tratar de iniciar sesión");
 		}
 	};
 
@@ -42,9 +51,10 @@ const LogIn = () => {
 	if (user?.id) {
 		return <Navigate to={"/"} />;
 	}
+
 	return (
 		<div className="flex flex-col  items-center justify-center min-h-[100vh] ">
-			<SeccionTitulo titulo="Iniciar sesion" />
+			<SeccionTitulo titulo="Iniciar sesión" />
 			<form
 				onSubmit={handleSubmit}
 				className="p-12 bg-slate-800 shadow-lg flex flex-col w-[500px]  rounded-lg"
@@ -56,7 +66,7 @@ const LogIn = () => {
 					</p>
 				)}
 				<label
-					className="font-bold text-xl py-5 text-slate-300 "
+					className="font-bold text-xl py-5 text-slate-300"
 					htmlFor="email"
 				>
 					Correo electrónico
@@ -75,20 +85,20 @@ const LogIn = () => {
 					Contraseña
 				</label>
 				<input
-					className="block  bg-slate-900 text-slate-200 placeholder-slate-500  p-4 text-lg rounded-lg"
+					className="block bg-slate-900 text-slate-200 placeholder-slate-500 p-4 text-lg rounded-lg"
 					type="password"
 					name="password"
 					placeholder="*********"
 				/>
 				{errors.password && <p className="text-red-500">{errors.password}</p>}
 				<button
-					className="rounded-lg text-slate-800 text-xl border p-4 border-yellow-400 shadow-md font-bold mt-8  bg-yellow-400"
+					className="rounded-lg text-slate-800 text-xl border p-4 border-yellow-400 shadow-md font-bold mt-8 bg-yellow-400"
 					type="submit"
 				>
-					Iniciar sesion
+					Iniciar sesión
 				</button>
 				<div className="flex justify-between items-center mt-4">
-					<p className="text-slate-200">¿No tienes cuenta?</p>{" "}
+					<p className="text-slate-200">¿No tienes cuenta?</p>
 					<Link to={"/registrarse"}>
 						<span className="text-lg text-red-400 font-bold border-b-2 border-yellow-400 cursor-pointer hover:text-red-300 hover:scale-105 duration-200">
 							Regístrate

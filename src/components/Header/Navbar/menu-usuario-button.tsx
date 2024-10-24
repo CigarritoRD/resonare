@@ -18,22 +18,23 @@ export default function UsuarioMenu() {
 		setAnchorEl(null);
 	};
 
-	const handleLogout = () => {
-		logout();
+	const handleLogout = async () => {
+		await logout();
 		handleClose();
 	};
+
 	const goToPerfil = () => {
 		handleClose();
-		if (user?.id) return navigate("/dashboard");
+		if (user?.id) navigate("/dashboard");
 	};
 
 	return (
 		<div>
 			<Button
 				id="basic-button"
-				aria-controls={open ? "menu usuario" : undefined}
+				aria-controls={open ? "menu-usuario" : undefined}
 				aria-haspopup="true"
-				aria-expanded={open ? "abierto" : undefined}
+				aria-expanded={open ? "true" : undefined}
 				onClick={handleClick}
 			>
 				<img src={avatarDefault} alt="avatar" className="w-8 h-8 p-1" />
@@ -56,7 +57,7 @@ export default function UsuarioMenu() {
 				}}
 			>
 				<MenuItem onClick={goToPerfil}>Ir al perfil</MenuItem>
-				<MenuItem onClick={handleClose}>Configuracion</MenuItem>
+				<MenuItem onClick={handleClose}>Configuración</MenuItem>
 				<MenuItem
 					sx={{ color: "red", fontWeight: "bold" }}
 					onClick={handleLogout}
