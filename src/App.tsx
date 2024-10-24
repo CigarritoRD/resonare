@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
-import CursoDetalle from "./pages/Curso/curso";
+import CursoDetalle from "./pages/Curso/detalles-del-curso";
 import ProfesoresDetalles from "./pages/profesores/profesor-detalle";
 import TeacherDashboard from "./pages/profesores/profesor-dashboard";
 import MisCursos from "./pages/profesores/mis-cursos";
