@@ -46,13 +46,13 @@ const Professores = () => {
 						<Link
 							to={professor.profileLink}
 							className="w-[350px] group overflow-hidden rounded-lg shadow-lg"
-							key={professor.name}
+							key={professor.image}
 						>
 							<div className="bg-slate-50 h-full rounded-lg w-full ">
 								<div className="overflow-hidden">
 									<img
 										className="w-full h-[350px]  group-hover:scale-110 transition-all ease-in-out duration-500 object-top object-cover rounded-lg "
-										src={`${professor.image}`}
+										src={`/public/${professor.image}`}
 										alt={`Foto de ${professor.name}`}
 									/>
 								</div>
