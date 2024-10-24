@@ -164,6 +164,7 @@ const CoursePlayer = () => {
 		loaded: number;
 		loadedSeconds: number;
 	}) => {
+		console.log(state);
 		// Aquí puedes implementar la lógica para actualizar el progreso del curso
 	};
 

@@ -10,17 +10,11 @@ import type { Database } from "../../types/supabase";
 
 const Home = () => {
 	const { user, isLoading: isUserLoading } = useUser();
-	const [error, setError] = useState(false);
+	const [error] = useState(false);
 	const [cursosSuscritos, setCursosSuscritos] = useState<
 		Database["public"]["Tables"]["cursos"]["Row"][]
 	>([]);
-	const {
-		cursos,
-		obtenerCursosSuscrito,
-		obtenerCursos,
-		buscarCursos,
-		isLoading: isCursosLoading,
-	} = useCursos();
+	const { cursos, obtenerCursosSuscrito } = useCursos();
 
 	useEffect(() => {
 		if (isUserLoading) return;
@@ -33,7 +27,7 @@ const Home = () => {
 		fetchCursosSuscritos();
 	}, [isUserLoading, obtenerCursosSuscrito, user?.id]);
 
-	if (isUserLoading || isCursosLoading) {
+	if (isUserLoading) {
 		return (
 			<div className="flex items-center justify-center h-screen">
 				<CircularProgress disableShrink />

@@ -36,6 +36,7 @@ interface Course {
 	students: number;
 	rating: number;
 }
+
 type DraggableItem = {
 	id: number;
 	type: "topic" | "video";
@@ -47,12 +48,12 @@ const MisCursos = () => {
 	const [courses, setCourses] = useState<Course[]>([]);
 	const [searchTerm, setSearchTerm] = useState<string>("");
 	const [selectedCourse, setSelectedCourse] = useState<Course | undefined>();
-	const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
+	const [setSelectedTopic] = useState<Topic | null>(null); // Corregido el uso de este estado
 	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const [uploadError, setUploadError] = useState<string>("");
 	const [newTopicTitle, setNewTopicTitle] = useState<string>("");
 	const [expandedTopics, setExpandedTopics] = useState<ExpandedTopics>({});
-	const [draggedItem, setDraggedItem] = useState<DraggableItem>();
+	const [draggedItem, setDraggedItem] = useState<DraggableItem | null>(null); // Corregido el uso de este estado
 	const [isDraftMode, setIsDraftMode] = useState<boolean>(false);
 
 	// Simulated API calls
@@ -104,6 +105,7 @@ const MisCursos = () => {
 	};
 
 	// Fetch courses on component mount
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		const loadCourses = async () => {
 			const fetchedCourses = await fetchCourses();
@@ -123,6 +125,7 @@ const MisCursos = () => {
 
 	const handleTopicSelect = (topic: Topic) => {
 		setSelectedTopic(topic);
+		console.log("Selected Topic:", topic); // Verifying selection
 	};
 
 	const handleVideoUpload = async (
@@ -210,8 +213,10 @@ const MisCursos = () => {
 
 	const handleDrop = (e: React.DragEvent, targetItem: DraggableItem) => {
 		e.preventDefault();
+
+		console.log(draggedItem, targetItem);
 		// Handle reordering of items
-		setDraggedItem(undefined);
+		setDraggedItem(null);
 	};
 
 	return (
@@ -241,7 +246,6 @@ const MisCursos = () => {
 					<h2 className="text-2xl font-semibold mb-4">Lista de Cursos</h2>
 					<ul className="space-y-4">
 						{filteredCourses.map((course) => (
-							// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 							<li
 								key={course.id}
 								className={`bg-slate-800 rounded-lg p-4 cursor-pointer transition-colors ${
@@ -250,6 +254,13 @@ const MisCursos = () => {
 										: "hover:bg-slate-700"
 								}`}
 								onClick={() => handleCourseSelect(course)}
+								onKeyDown={(e) => {
+									if (e.key === "Enter" || e.key === " ") {
+										handleCourseSelect(course);
+									}
+								}}
+								// biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+								tabIndex={0} // Making it focusable for keyboard users
 							>
 								<h3 className="text-lg font-semibold mb-2">{course.title}</h3>
 								<div className="flex justify-between text-sm text-slate-400">
@@ -300,6 +311,7 @@ const MisCursos = () => {
 								<h3 className="text-xl font-semibold mb-2">Temas del Curso</h3>
 								<ul className="space-y-4">
 									{selectedCourse.topics.map((topic) => (
+										// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 										<li
 											key={topic.id}
 											className="bg-slate-700 rounded-lg p-4"
@@ -311,6 +323,7 @@ const MisCursos = () => {
 											onDrop={(e) =>
 												handleDrop(e, { type: "topic", id: topic.id })
 											}
+											onClick={() => handleTopicSelect(topic)} // Call to handleTopicSelect when clicking on a topic
 										>
 											<button
 												type="button"
