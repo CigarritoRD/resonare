@@ -36,8 +36,12 @@ const LogIn = () => {
 				emailInput: String(email),
 				passwordInput: String(password),
 			});
-			if (user?.user_metadata?.rol === "estudiante") return navigate("/home");
-			navigate("/dashboard");
+
+			// revisar si el usuario es profesor y redireccionar a la ruta adecuada
+			if (user?.user_metadata?.rol === "profesor")
+				return navigate("/dashboard-profesores");
+
+			navigate("/dashboard-estudiantes");
 		} catch (error) {
 			if (error instanceof Error) {
 				console.error(error.message);
