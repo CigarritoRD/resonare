@@ -27,13 +27,13 @@ const CursoDetalle = () => {
 		<div>
 			{
 				<>
-					<header className=" mx-auto h-[600px] px-5 grid place-content-center bg-slate-950 ">
-						<div className="gap-12 flex max-w-[1600px] mx-auto  justify-center items-center">
-							<div className=" mx-auto w-1/2 flex flex-col  justify-center gap-8 py-8">
-								<h1 className="text-7xl text-white capitalize font-bold">
+					<header className="mx-auto h-[680px] lg:h-[600px] px-4 py-4 lg:py-8 grid place-content-center bg-slate-950">
+						<div className="gap-8 lg:gap-12 flex flex-col-reverse lg:flex-row max-w-[1600px] mx-auto justify-center items-center">
+							<div className="w-full lg:w-1/2 flex flex-col justify-center gap-6 lg:gap-8 py-4 lg:py-8 text-center lg:text-left">
+								<h1 className="text-3xl lg:text-6xl text-white capitalize font-bold">
 									{cursoParaMostrar[0]?.titulo}
 								</h1>
-								<span className="text-3xl text-white leading-relaxed">
+								<span className="text-lg lg:text-2xl text-white leading-relaxed">
 									{cursoParaMostrar[0]?.descripcion}
 								</span>
 								<Link
@@ -41,31 +41,37 @@ const CursoDetalle = () => {
 								>
 									<button
 										type="button"
-										className="text-2xl w-fit px-20 bg-yellow-400 py-2 font-medium rounded-lg drop-shadow-md "
+										className="text-lg lg:text-2xl w-fit px-8 lg:px-16 bg-yellow-400 py-2 font-medium rounded-lg drop-shadow-md "
 									>
 										EMPIEZA YA
 									</button>
 								</Link>
-								<div className="flex gap-4 items-center mt-4">
-									<p className="text-xl text-slate-100 font-bold">
-										Puntuacion:
+								<div className="flex gap-2 lg:gap-4 items-center justify-center lg:justify-start mt-4">
+									<p className="text-base lg:text-lg text-slate-100 font-bold">
+										Puntuación:
 									</p>
 									<span className="text-yellow-400 font-bold">⭐</span>
-									<span className="text-yellow-400 font-bold text-xl">
+									<span className="text-yellow-400 font-bold text-base lg:text-lg">
 										4.5 / 5.0
 									</span>
 								</div>
 							</div>
-							<div className="w-1/2 h-[550px] rounded-xl overflow-hidden border-yellow-400 shadow-lg">
-								<img
-									className="h-full w-full object-cover  "
-									src={`/${cursoParaMostrar[0]?.miniatura}`}
-									alt=""
-								/>
+							<div className="w-full lg:w-1/2 h-[250px] lg:h-[500px] rounded-xl overflow-hidden border-yellow-400 shadow-lg">
+								{cursoParaMostrar[0]?.miniatura ? (
+									<img
+										className="h-full w-full object-cover"
+										src={`/${cursoParaMostrar[0]?.miniatura}`}
+										alt={cursoParaMostrar[0]?.titulo}
+									/>
+								) : (
+									<div className="h-full w-full flex items-center justify-center bg-gray-700">
+										<p className="text-white">Imagen no disponible</p>
+									</div>
+								)}
 							</div>
 						</div>
 					</header>
-					<div className="bg-slate-900">
+					<div className="bg-slate-900 lg:px-8  lg:py-12">
 						<TopicosDelCursos curso={cursoParaMostrar[0]} id={id} />
 					</div>
 				</>

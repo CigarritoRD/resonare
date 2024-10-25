@@ -56,7 +56,7 @@ const Home = () => {
 					<h2 className="relative text-center text-red-400 font-bold text-6xl pb-5 mb-10 after:content-[''] after:block after:w-40 after:h-1 after:bg-yellow-400 after:rounded-lg after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2">
 						Cursos
 					</h2>
-					<div className="space-y-16">
+					<div className="md:space-y-16">
 						<CursosCarrusel
 							cursos={cursos.filter((curso) => curso.membresia_requerida === 1)}
 							titulo="Cursos gratuitos"
