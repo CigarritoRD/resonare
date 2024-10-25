@@ -4,6 +4,7 @@ import useUser from "../../../hooks/useUser";
 import UsuarioMenu from "./menu-usuario-button";
 import { SearchIcon } from "../../icons/icons";
 import Logo from "../Logo";
+import LoaderSpiner from "../../loader-spiner";
 
 const Navbar = () => {
 	const { user, isLoading } = useUser();
@@ -29,12 +30,18 @@ const Navbar = () => {
 			</form>
 
 			{/* Desktop Menu */}
-			<ul className="hidden md:flex gap-8 tracking-wide items-center text-lg text-slate-50">
+			<ul className="hidden md:flex gap-8 tracking-wide items-center text-md text-slate-300">
 				{isLoading ? (
-					""
+					<LoaderSpiner />
 				) : user?.id ? (
 					<>
-						<NavLink to={"/planes"}>
+						<NavLink
+							to={"/dashboard-estudiantes"}
+							className="hover:text-white duration-150"
+						>
+							<li className="font-medium">panel de estudiante</li>
+						</NavLink>
+						<NavLink to={"/planes"} className="hover:text-white duration-150">
 							<li className="font-medium">planes</li>
 						</NavLink>
 						<li className="mr-4 cursor-pointer h-8 w-8 flex items-center justify-center bg-white rounded-full">
@@ -91,9 +98,15 @@ const Navbar = () => {
 			>
 				<ul className="flex flex-col items-center gap-4 py-4 text-lg text-slate-50">
 					{isLoading ? (
-						""
+						<LoaderSpiner />
 					) : user?.id ? (
 						<>
+							<NavLink to={"/planes"} onClick={toggleMenu}>
+								<li className="font-medium">planes</li>
+							</NavLink>
+							<NavLink to={"/planes"} onClick={toggleMenu}>
+								<li className="font-medium">planes</li>
+							</NavLink>
 							<NavLink to={"/planes"} onClick={toggleMenu}>
 								<li className="font-medium">planes</li>
 							</NavLink>

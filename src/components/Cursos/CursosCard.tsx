@@ -28,7 +28,7 @@ const CursosCard = ({
 						<div className="flex gap-2 items-center">
 							<span className="text-yellow-400 font-bold">⭐</span>
 							<span className="text-yellow-400 font-bold text-sm lg:text-base">
-								4.5/5.0
+								4.5 / 5.0
 							</span>
 						</div>
 						<button

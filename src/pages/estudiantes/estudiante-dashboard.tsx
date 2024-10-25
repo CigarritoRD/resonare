@@ -5,9 +5,7 @@ import {
 	PlayIcon,
 	UserIcon,
 	BarChartIcon,
-	BellIcon,
 	SettingIcon,
-	LogOutIcon,
 	FireIcon,
 	ClockIcon,
 	StarIcon,
@@ -116,85 +114,77 @@ const StudentDashboard = () => {
 
 	return (
 		<div className="min-h-screen bg-slate-900 text-slate-100">
-			<header className="bg-slate-800 p-4 flex justify-between items-center">
-				<div className="flex items-center space-x-4">
-					<MusicIcon className="h-8 w-8 text-yellow-400" />
-					<h1 className="text-2xl font-bold text-slate-100">
-						Escuela de Música
-					</h1>
-				</div>
-				<div className="flex items-center space-x-4">
+			<main className="p-8">
+				<div className="md:flex gap-8 flex-col md:flex-row">
+					{/* Perfil del estudiante */}
+					<div className="mb-8 bg-slate-800 border border-slate-700 rounded-lg p-6 relative">
+						<SettingIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer absolute top-4 right-4" />
+						<div className="flex items-center space-x-4">
+							<img
+								src={student.avatar}
+								alt={student.name}
+								className="w-24 h-24 rounded-full"
+							/>
+							<div>
+								<h2 className="text-2xl font-bold text-slate-100">
+									{student.name}
+								</h2>
+								<p className="text-slate-300">{student.email}</p>
+							</div>
+						</div>
+					</div>
+					{/* menu  */}
+					<nav className="bg-slate-800 p-4 border-b w-full border-slate-700 flex justify-between items-center flex-1 rounded-lg h-fit place-self-end mb-8">
+						<ul className="md:flex flex-col md:flex-row items-center gap-4  w-full">
+							<li className="mb-4 md:mb-0">
+								<button
+									type="button"
+									className={`px-4 md:text-lg  py-2 w-full md:w-auto rounded-md transition-colors flex items-center ${
+										activeTab === "overview"
+											? "bg-yellow-400 text-slate-900"
+											: "text-slate-200 hover:bg-slate-700"
+									}`}
+									onClick={() => setActiveTab("overview")}
+								>
+									<UserIcon className="h-4 w-4 inline-block mr-2" />
+									Vista General
+								</button>
+							</li>
+							<li className="mb-4 md:mb-0">
+								<button
+									type="button"
+									className={`px-4 md:text-lg py-2 w-full md:w-auto rounded-md transition-colors flex items-center  ${
+										activeTab === "courses"
+											? "bg-yellow-400 text-slate-900"
+											: "text-slate-200 hover:bg-slate-700"
+									}`}
+									onClick={() => setActiveTab("courses")}
+								>
+									<BookOpenIcon className="h-4 w-4 inline-block mr-2" />
+									Mis Cursos
+								</button>
+							</li>
+							<li className=" md:mb-0">
+								<button
+									type="button"
+									className={`px-4 md:text-lg  py-2 w-full md:w-auto rounded-md transition-colors flex items-center  ${
+										activeTab === "progress"
+											? "bg-yellow-400 text-slate-900"
+											: "text-slate-200 hover:bg-slate-700"
+									}`}
+									onClick={() => setActiveTab("progress")}
+								>
+									<BarChartIcon className="h-4 w-4 inline-block mr-2" />
+									Progreso
+								</button>
+							</li>
+						</ul>
+						{/* <div className="flex items-center space-x-4">
 					<BellIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
 					<SettingIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
 					<LogOutIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer" />
-				</div>
-			</header>
-
-			<nav className="bg-slate-800 p-4 border-b border-slate-700">
-				<ul className="flex space-x-4">
-					<li>
-						<button
-							type="button"
-							className={`px-4 py-2 rounded-md transition-colors ${
-								activeTab === "overview"
-									? "bg-yellow-400 text-slate-900"
-									: "text-slate-200 hover:bg-slate-700"
-							}`}
-							onClick={() => setActiveTab("overview")}
-						>
-							<UserIcon className="h-4 w-4 inline-block mr-2" />
-							Vista General
-						</button>
-					</li>
-					<li>
-						<button
-							type="button"
-							className={`px-4 py-2 rounded-md transition-colors ${
-								activeTab === "courses"
-									? "bg-yellow-400 text-slate-900"
-									: "text-slate-200 hover:bg-slate-700"
-							}`}
-							onClick={() => setActiveTab("courses")}
-						>
-							<BookOpenIcon className="h-4 w-4 inline-block mr-2" />
-							Mis Cursos
-						</button>
-					</li>
-					<li>
-						<button
-							type="button"
-							className={`px-4 py-2 rounded-md transition-colors ${
-								activeTab === "progress"
-									? "bg-yellow-400 text-slate-900"
-									: "text-slate-200 hover:bg-slate-700"
-							}`}
-							onClick={() => setActiveTab("progress")}
-						>
-							<BarChartIcon className="h-4 w-4 inline-block mr-2" />
-							Progreso
-						</button>
-					</li>
-				</ul>
-			</nav>
-
-			<main className="p-8">
-				<div className="mb-8 bg-slate-800 border border-slate-700 rounded-lg p-6">
-					<h2 className="text-xl font-semibold mb-4 text-slate-100">
-						Perfil del Estudiante
-					</h2>
-					<div className="flex items-center space-x-4">
-						<img
-							src={student.avatar}
-							alt={student.name}
-							className="w-20 h-20 rounded-full"
-						/>
-						<div>
-							<h2 className="text-2xl font-bold text-slate-100">
-								{student.name}
-							</h2>
-							<p className="text-slate-300">{student.email}</p>
-						</div>
-					</div>
+				</div> */}
+					</nav>
 				</div>
 
 				{activeTab === "overview" && (
