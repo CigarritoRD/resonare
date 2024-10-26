@@ -811,6 +811,7 @@ export const SaveIcon = ({ className }: { className: string }) => {
 	return (
 		<svg
 			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
 			width={24}
 			height={24}
 			viewBox="0 0 24 24"
@@ -819,12 +820,12 @@ export const SaveIcon = ({ className }: { className: string }) => {
 			strokeWidth={2}
 			strokeLinecap="round"
 			strokeLinejoin="round"
-			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-save`}
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-device-floppy`}
 		>
 			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-			<path d="M19 21H5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h14l5 5v11a2 2 0 0 1 -2 2z" />
-			<polyline points="17 21 17 13 7 13 7 21" />
-			<polyline points="7 3 7 8 15 8" />
+			<path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+			<path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+			<path d="M14 4l0 4l-6 0l0 -4" />
 		</svg>
 	);
 };
@@ -854,6 +855,7 @@ export const MailIcon = ({ className }: { className: string }) => {
 	return (
 		<svg
 			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
 			width={24}
 			height={24}
 			viewBox="0 0 24 24"
@@ -862,12 +864,11 @@ export const MailIcon = ({ className }: { className: string }) => {
 			strokeWidth={2}
 			strokeLinecap="round"
 			strokeLinejoin="round"
-			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-mail`}
+			className={`${className} "icon icon-tabler icons-tabler-outline icon-tabler-mail`}
 		>
 			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-			<path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
-			<path d="M3 6l3 1l3-1" />
-			<path d="M21 6l-3 1l3 1" />
+			<path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+			<path d="M3 7l9 6l9 -6" />
 		</svg>
 	);
 };
@@ -955,6 +956,93 @@ export const UserMinusIcon = ({ className }: { className: string }) => {
 			<path d="M16 11v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1" />
 			<path d="M20 11v-1a4 4 0 0 0-4-4H12a4 4 0 0 0-4 4v1" />
 			<path d="M8 11h4" />
+		</svg>
+	);
+};
+
+export const ArrowLeftIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-arrow-left`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<line x1="5" y1="12" x2="19" y2="12" />
+			<line x1="5" y1="12" x2="11" y2="18" />
+			<line x1="5" y1="12" x2="11" y2="6" />
+		</svg>
+	);
+};
+export const CameraIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden={true}
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-camera`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+			<path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+		</svg>
+	);
+};
+
+export const MapPinIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-map-pin`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+			<circle cx="12" cy="10" r="3" />
+		</svg>
+	);
+};
+
+export const PhoneIcon = ({ className }: { className: string }) => {
+	return (
+		<svg
+			aria-hidden="true"
+			width={24}
+			height={24}
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={2}
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className={`${className} icon icon-tabler icons-tabler-outline icon-tabler-device-mobile`}
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+			<path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z" />
+			<path d="M11 4h2" />
+			<path d="M12 17v.01" />
 		</svg>
 	);
 };

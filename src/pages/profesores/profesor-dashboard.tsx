@@ -9,6 +9,7 @@ import {
 } from "../../components/icons/icons";
 import avatar from "../../assets/defaultavatar.svg";
 import useUser from "../../hooks/useUser";
+import { Link } from "react-router-dom";
 
 export default function TeacherDashboard() {
 	const [courses] = useState([
@@ -223,12 +224,14 @@ export default function TeacherDashboard() {
 				<div className="bg-slate-800 rounded-lg shadow-md p-6 text-slate-100">
 					<div>Acciones Rápidas</div>
 					<div className="flex justify-between">
-						<button
-							type="button"
-							className="px-4 py-2 bg-slate-700 text-white rounded hover:bg-slate-600"
-						>
-							Crear Nuevo Curso
-						</button>
+						<Link to={"/dashboard-profesores/crear-curso"}>
+							<button
+								type="button"
+								className="px-4 py-2 bg-slate-700 text-white rounded hover:bg-slate-600"
+							>
+								Crear Nuevo Curso
+							</button>
+						</Link>
 						<button
 							type="button"
 							className="px-4 py-2 bg-slate-800 text-slate-100 rounded hover:bg-slate-700"

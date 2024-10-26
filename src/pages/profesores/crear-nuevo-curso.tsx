@@ -73,7 +73,7 @@ export default function CreateCourseForm() {
 	};
 
 	return (
-		<div className="min-h-screen bg-slate-900 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+		<div className="min-h-screen bg-slate-900 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 text-slate-100">
 			<div className="max-w-md w-full space-y-10">
 				<div>
 					<MusicIcon className="mx-auto h-12 w-auto text-yellow-400" />

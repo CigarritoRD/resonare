@@ -10,6 +10,7 @@ import {
 	ClockIcon,
 	StarIcon,
 } from "../../components/icons/icons";
+import { Link } from "react-router-dom";
 
 interface Achievement {
 	id: number;
@@ -118,7 +119,9 @@ const StudentDashboard = () => {
 				<div className="md:flex gap-8 flex-col md:flex-row">
 					{/* Perfil del estudiante */}
 					<div className="mb-8 bg-slate-800 border border-slate-700 rounded-lg p-6 relative">
-						<SettingIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer absolute top-4 right-4" />
+						<Link to="/editar-perfil">
+							<SettingIcon className="h-6 w-6 text-slate-200 hover:text-yellow-400 cursor-pointer absolute top-4 right-4" />
+						</Link>
 						<div className="flex items-center space-x-4">
 							<img
 								src={student.avatar}

@@ -12,6 +12,7 @@ import {
 	UsersIcon,
 	StarIcon,
 } from "../../components/icons/icons";
+import { Link } from "react-router-dom";
 
 // Define interfaces for the data structures
 interface ExpandedTopics {
@@ -233,12 +234,14 @@ const MisCursos = () => {
 					/>
 					<SearchIcon className="absolute left-3 top-2.5 text-slate-400" />
 				</div>
-				<button
-					type="button"
-					className="bg-yellow-400 text-slate-900 rounded-lg px-4 py-2 font-semibold hover:bg-yellow-500 transition-colors"
-				>
-					Nuevo Curso
-				</button>
+				<Link to={"/dashboard-profesores/crear-curso"}>
+					<button
+						type="button"
+						className="bg-yellow-400 text-slate-900 rounded-lg px-4 py-2 font-semibold hover:bg-yellow-500 transition-colors"
+					>
+						Nuevo Curso
+					</button>
+				</Link>
 			</div>
 
 			<div className="flex">

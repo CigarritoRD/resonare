@@ -24,7 +24,7 @@ const RutasPrivadasProfesor = () => {
 	}
 
 	return (
-		<div className="flex h-screen bg-slate-900 text-slate-100 overflow-hidden w-full">
+		<div className="flex min-h-screen bg-slate-900 text-slate-100  w-full">
 			{/* Sidebar */}
 			<aside className="min-w-64 bg-slate-800 shadow-md">
 				<div className="p-4 capitalize">

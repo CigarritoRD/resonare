@@ -17,6 +17,7 @@ import Navbar from "./components/Header/Navbar/Navbar";
 import RutasPrivadasProfesor from "./pages/profesores/rutas-privadas-profesor";
 import useUser from "./hooks/useUser";
 import CursoDetalle from "./pages/Curso/detalles-del-curso";
+import StudentProfile from "./pages/estudiantes/estudiante-perfil";
 
 const App = () => {
 	const location = useLocation();
@@ -46,6 +47,7 @@ const App = () => {
 							path="/dashboard-estudiantes"
 							element={<StudentDashboard />}
 						/>
+						<Route path="/editar-perfil" element={<StudentProfile />} />
 						<Route
 							path="/curso/:id/:cursoNombre/video"
 							element={<CoursePlayer />}
